@@ -13,9 +13,9 @@
                 </el-header>
                 <el-main style="text-align: left">
                   <div>
-                  <el-checkbox v-model="checkBoxList.time.full" label="full time"  /></div>
+                  <el-checkbox v-model="checkBoxList.studyMode.full" label="full time"  @change="modeCodeChange"/></div>
                   <div>
-                    <el-checkbox v-model="checkBoxList.time.part" label="part time" /></div>
+                    <el-checkbox v-model="checkBoxList.studyMode.part" label="part time" /></div>
 
                 </el-main>
               </el-container>
@@ -80,7 +80,7 @@ export default {
         },
       ],
       checkBoxList: {
-        time:{
+        studyMode:{
           full:false,
           part:false
         },
@@ -110,12 +110,32 @@ export default {
         studyMode:this.$data.modeCode,
         certificateType:this.typeList
       }
-      /**
+      /** todo
        * checkCookieValid().then(res=>{
        *
        *       })
        */
 
+      getCourses(courseParams).then(res=>{
+        console.log(res)
+        this.$data.courseList=res.data.courseList
+      })
+    },
+    modeCodeChange(){
+      if(this.$data.checkBoxList.studyMode.full^this.$data.checkBoxList.studyMode.part){
+        this.$data.modeCode=0
+      }else{
+        if(this.$data.checkBoxList.studyMode.full){
+          this.$data.modeCode=1
+        }else {
+          this.$data.modeCode=2
+        }
+      }
+      //todo check valid cookie
+      const courseParams={
+        studyMode:this.$data.modeCode,
+        certificateType:this.typeList
+      }
       getCourses(courseParams).then(res=>{
         console.log(res)
         this.$data.courseList=res.data.courseList
