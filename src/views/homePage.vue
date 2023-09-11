@@ -42,7 +42,7 @@
           <span style="font-size: 19px;font-weight: bold">Online Courses</span>
         </div>
         <el-card v-for="(item,index) in this.$data.courseList" style="margin-top: 20px;border:0px;border-radius: 15px;cursor: pointer" shadow="hover"
-                 @click="this.$router.push({path: '/courseInfo', query: { courseId: item.id } });">
+                 @click="handleClickProgramme(item)">
           <el-container>
             <el-header height="10px" style="text-align: left;font-size: 18px;font-weight: bold">{{ item.name }}</el-header>
             <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }} time | {{item.certificateType}}</div>
@@ -140,6 +140,10 @@ export default {
         console.log(res)
         this.$data.courseList=res.data.courseList
       })
+    },
+    handleClickProgramme(item){
+      window.localStorage.setItem('course',JSON.stringify(item))
+      this.$router.push({path: '/courseInfo', query: { courseId: item.id } })
     }
   }
 }
