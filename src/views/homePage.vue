@@ -9,7 +9,7 @@
             <div>
               <el-container>
                 <el-header style="text-align: left;font-weight: 500" height="20px">
-                  Time
+                  Study Mode
                 </el-header>
                 <el-main style="text-align: left">
                   <div>
@@ -22,14 +22,14 @@
             </div>
             <div>
               <el-container>
-                <el-header style="text-align: left;" height="20px">Type</el-header>
+                <el-header style="text-align: left;" height="20px">Certificate Type</el-header>
                 <el-main style="text-align: left">
                   <div>
-                  <el-checkbox v-model="checkBoxList.type.diploma" label="diploma"  /></div>
+                  <el-checkbox v-model="checkBoxList.type.diploma" label="diploma" @change="handleTypeChange" /></div>
                   <div>
-                    <el-checkbox v-model="checkBoxList.type.certificate" label="certificate" /></div>
+                    <el-checkbox v-model="checkBoxList.type.certificate" label="certificate" @change="handleTypeChange"/></div>
                   <div>
-                    <el-checkbox v-model="checkBoxList.type.postgraduate" label="postgraduate" /></div>
+                    <el-checkbox v-model="checkBoxList.type.postgraduate" label="postgraduate" @change="handleTypeChange"/></div>
                 </el-main>
               </el-container>
             </div>
@@ -45,7 +45,7 @@
                  @click="this.$router.push({path: '/courseInfo', query: { courseId: item.id } });">
           <el-container>
             <el-header height="10px" style="text-align: left;font-size: 18px;font-weight: bold">{{ item.name }}</el-header>
-            <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.time }} time | {{item.type}}</div>
+            <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }} time | {{item.certificateType}}</div>
               <div>{{ item.context }}</div></el-main>
           </el-container>
 
@@ -57,6 +57,9 @@
 </template>
 
 <script>
+import {getCourses} from "../api/course.js";
+import {checkCookieValid} from "../api/user.js";
+
 export default {
   name: "homePage",
   data(){
@@ -65,29 +68,16 @@ export default {
         {
           id:1,
           name:'Python',
-          time:'full',
-          type:'certificate',
+          studyMode:'full',
+          certificateType:'certificate',
           context:'Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.'
         },{
           id:2,
           name:'C++ Programming',
-          time:'part',
-          type:'postgraduate',
+          studyMode:'part',
+          certificateType:'postgraduate',
           context:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
         },
-        {
-          id:3,
-          name:'SQL',
-          time:'full',
-          type:'certificate',
-          context:'Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.'
-        },{
-          id:4,
-          name:'Human Computer Interaction',
-          time:'part',
-          type:'postgraduate',
-          context:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
-        }
       ],
       checkBoxList: {
         time:{
@@ -98,8 +88,38 @@ export default {
           certificate:false,
           diploma:false,
           postgraduate:false
-        }
+        },
+      },
+      typeList:[],
+      modeCode:0
+    }
+  },
+  methods:{
+    handleTypeChange(){
+      this.$data.typeList=[]
+      if(this.$data.checkBoxList.type.certificate){
+        this.$data.typeList.push('certificate')
       }
+      if(this.$data.checkBoxList.type.diploma){
+        this.$data.typeList.push('diploma')
+      }
+      if(this.$data.checkBoxList.type.postgraduate){
+        this.$data.typeList.push('postgraduate')
+      }
+      const courseParams={
+        studyMode:this.$data.modeCode,
+        certificateType:this.typeList
+      }
+      /**
+       * checkCookieValid().then(res=>{
+       *
+       *       })
+       */
+
+      getCourses(courseParams).then(res=>{
+        console.log(res)
+        this.$data.courseList=res.data.courseList
+      })
     }
   }
 }
