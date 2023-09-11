@@ -5,10 +5,22 @@
     <div style="height: 30px"></div>
     <div style='font: 27px "Comic Sans MS";margin-bottom: 30px'>Create your account</div>
     <div>
-      <div>
+      <div style="margin-top: 20px">
+        <el-input class="login-input"
+                  v-model="this.$data.userName"
+                  show-password
+                  placeholder="Please Input Your Username">
+          <template #prefix>
+            <el-icon>
+              <Avatar/>
+            </el-icon>
+          </template>
+        </el-input>
+      </div>
+      <div style="margin-top: 20px">
         <el-input class="login-input"
                   v-model="this.$data.registerEmail"
-                  placeholder="Please Input Your Email">
+                  placeholder="Please Input Your Email" >
           <template #prefix>
             <el-icon>
               <Message/>
@@ -17,29 +29,6 @@
         </el-input>
       </div>
 
-      <div style="margin-top: 20px">
-        <el-input class="login-input"
-                  v-model="this.$data.firstName"
-                  show-password
-                  placeholder="FirstName" style="width: 165px">
-          <template #prefix>
-            <el-icon>
-              <Avatar/>
-            </el-icon>
-          </template>
-        </el-input>
-
-        <el-input class="login-input"
-                  v-model="this.$data.lastName"
-                  show-password
-                  placeholder="LastName" style="width: 165px;margin-left:20px ">
-          <template #prefix>
-            <el-icon>
-              <Avatar/>
-            </el-icon>
-          </template>
-        </el-input>
-      </div>
 
       <div style="margin-top: 20px">
         <el-input class="login-input"
@@ -87,8 +76,7 @@ export default {
       registerEmail:'',
       registerPassword:'',
       confirmPassword:'',
-      firstName:'',
-      lastName:''
+      userName:''
     }
   }
 }

@@ -67,6 +67,7 @@ export default {
           that.$message.error("Login failed, please check your email or password")
 
         }else {
+          window.localStorage.setItem('login','true')
           that.$message.success("welcome back")
           that.$router.push({path: '/home'})
         }
