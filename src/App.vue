@@ -25,6 +25,7 @@
     <el-button style="position:absolute;right: 120px;top: 15px" @click="this.$router.push('/register')">register</el-button>
     </div>
     <div v-if="this.$data.login">
+      <div style="position:absolute;right:130px;top:20px;">Hello, user123435322</div>
       <el-button style="position:absolute;right: 30px;top: 15px" @click="handleLogout">logout</el-button>
     </div>
 
