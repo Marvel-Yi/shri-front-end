@@ -2,7 +2,7 @@
   <div style="height: 59px"></div>
   <div class="clip-img">
     <div class="course-name">
-    <span>{{ courseName }}</span>
+    <span>{{ courseInfo.name }}</span>
     </div>
     <div style="margin-top: 50px">
       <el-button color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white">Apply Now</el-button></div>

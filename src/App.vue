@@ -10,7 +10,7 @@
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />-->
-  <div v-if="$route.meta.showNavi">
+  <div v-if="$route.meta.showNavi" :key="$route.fullPath">
   <el-menu
       :default-active="$route.path"
       mode="horizontal"
@@ -19,8 +19,14 @@
   >
     <el-menu-item index="/home" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Courses</div></el-menu-item>
     <el-menu-item index="/courseInfo"><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Course Info</div></el-menu-item>
+
+    <div v-if="!this.$data.login">
     <el-button style="position:absolute;right: 30px;top: 15px" @click="this.$router.push('/login')">login</el-button>
     <el-button style="position:absolute;right: 120px;top: 15px" @click="this.$router.push('/register')">register</el-button>
+    </div>
+    <div v-if="this.$data.login">
+      <el-button style="position:absolute;right: 30px;top: 15px" @click="handleLogout">logout</el-button>
+    </div>
 
   </el-menu>
   </div>
@@ -33,11 +39,33 @@
 
 </style>
 <script >
-import imgLOGO from './assets/shriLOGO.png'
+
 export default {
   name: 'App',
   components: {
 
+  },
+  data(){
+    return{
+      login:'',
+      userName:''
+    }
+  },
+  mounted(){
+    this.$data.login=localStorage.getItem('login')
+    this.$data.userName=localStorage.getItem('userName')
+    console.log('login'+this.$data.login)
+  },
+  methods:{
+    handleLogout(){
+      this.$router.push('/login')
+      window.localStorage.removeItem('userName');
+      window.localStorage.removeItem('login')
+      this.$data.login=''
+      this.$data.userName=''
+      console.log('logout')
+      this.$forceUpdate()
+    }
   }
 }
 </script>

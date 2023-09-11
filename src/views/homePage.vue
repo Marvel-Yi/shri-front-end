@@ -112,6 +112,8 @@ export default {
       }
       getCourses(courseParams).then(res=>{
         if(res.code===-1){
+          localStorage.removeItem('login')
+          localStorage.removeItem('userName')
           this.$router.push('/login')
         }else {
           console.log(res)
@@ -135,6 +137,8 @@ export default {
       }
       getCourses(courseParams).then(res=>{
         if(res.code===-1){
+          localStorage.removeItem('login')
+          localStorage.removeItem('userName')
           this.$router.push('/login')
         }else {
           console.log(res)

@@ -55,7 +55,7 @@
         </el-input>
       </div>
       <div style="margin-top: 20px;">
-        <el-button color="#303f9f" style="font: 20px 'Comic Sans MS';width: 350px;height: 50px">CREATE ACCOUNT</el-button>
+        <el-button color="#303f9f" style="font: 20px 'Comic Sans MS';width: 350px;height: 50px" @click="handleRegister">CREATE ACCOUNT</el-button>
       </div>
       <div style="margin-top: 15px;font: 15px 'Comic Sans MS'"><span>Have an account? </span><span class="hover-link" @click="this.$router.push('/login')">Log in</span>  </div>
     </div>
@@ -64,6 +64,7 @@
 
 <script >
 import { Lock,Message,Avatar } from '@element-plus/icons-vue'
+import {register} from "../api/user.js";
 export default {
   name: "registerPage",
   components: {
@@ -77,6 +78,23 @@ export default {
       registerPassword:'',
       confirmPassword:'',
       userName:''
+    }
+  },
+  methods:{
+    handleRegister(){
+      const registerForm={
+        userName:this.$data.userName,
+        email:this.$data.registerEmail,
+        password:this.$data.registerPassword,
+        confirmPassword:this.$data.confirmPassword
+      }
+      register(registerForm).then(res=>{
+        if(res.code===0){
+          //todo
+        }else{
+          //todo
+        }
+      })
     }
   }
 }
