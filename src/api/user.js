@@ -33,7 +33,7 @@ export const register = registerInfo =>{
     })
 }
 export const checkCookieValid=()=>{
-    return axios.post(`http://127.0.0.1:8080/check`).then(res=>{
+    return axios.post(`http://127.0.0.1:8080/loginStatus`).then(res=>{
         return res
     })
 }

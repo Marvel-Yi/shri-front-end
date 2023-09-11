@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import {checkCookieValid} from "../api/user.js";
+
 
 export default {
   name: "courseInfo",
@@ -88,12 +88,6 @@ export default {
     }
   },
   mounted(){
-    checkCookieValid().then(res=>{
-      if(res.data.code===0){//invalid
-        window.localStorage.setItem('login','false')
-        this.$router.push('/login')
-      }
-    })
     console.log(this.$route.query.courseId)
     this.$data.courseInfo=JSON.parse(localStorage.getItem('course'))
   },

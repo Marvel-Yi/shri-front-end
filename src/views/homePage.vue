@@ -58,7 +58,7 @@
 
 <script>
 import {getCourses} from "../api/course.js";
-import {checkCookieValid} from "../api/user.js";
+
 
 export default {
   name: "homePage",
@@ -110,15 +110,13 @@ export default {
         studyMode:this.$data.modeCode,
         certificateType:this.typeList
       }
-      /** todo
-       * checkCookieValid().then(res=>{
-       *
-       *       })
-       */
-
       getCourses(courseParams).then(res=>{
-        console.log(res)
-        this.$data.courseList=res.data.courseList
+        if(res.code===-1){
+          this.$router.push('/login')
+        }else {
+          console.log(res)
+          this.$data.courseList = res.data.courseList
+        }
       })
     },
     modeCodeChange(){
@@ -131,14 +129,17 @@ export default {
           this.$data.modeCode=2
         }
       }
-      //todo check valid cookie
       const courseParams={
         studyMode:this.$data.modeCode,
         certificateType:this.typeList
       }
       getCourses(courseParams).then(res=>{
-        console.log(res)
-        this.$data.courseList=res.data.courseList
+        if(res.code===-1){
+          this.$router.push('/login')
+        }else {
+          console.log(res)
+          this.$data.courseList = res.data.courseList
+        }
       })
     },
     handleClickProgramme(item){
