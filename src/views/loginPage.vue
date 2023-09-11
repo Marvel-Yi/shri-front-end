@@ -57,7 +57,7 @@ export default {
     handleLogin(){
       var that=this
       const loginInfo = {
-        email: this.loginForm.loginEmail,
+        userName: this.loginForm.loginEmail,
         password: this.loginForm.loginPassword,
       }
       loginUser(loginInfo).then(res=>{
@@ -77,6 +77,9 @@ export default {
 </script>
 
 <style scoped>
+body{
+
+}
 .login-input{
   border-radius: 10px;
   width: 350px;

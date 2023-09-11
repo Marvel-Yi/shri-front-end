@@ -41,7 +41,8 @@
         <div  style="border: 0px;border-radius: 15px;background-color: white;text-align: left;padding: 10px;padding-left: 30px">
           <span style="font-size: 19px;font-weight: bold">Online Courses</span>
         </div>
-        <el-card v-for="(item,index) in this.$data.courseList" style="margin-top: 20px;border:0px;border-radius: 15px;cursor: pointer" shadow="hover">
+        <el-card v-for="(item,index) in this.$data.courseList" style="margin-top: 20px;border:0px;border-radius: 15px;cursor: pointer" shadow="hover"
+                 @click="this.$router.push({path: '/courseInfo', query: { courseId: item.id } });">
           <el-container>
             <el-header height="10px" style="text-align: left;font-size: 18px;font-weight: bold">{{ item.name }}</el-header>
             <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.time }} time | {{item.type}}</div>
@@ -75,14 +76,14 @@ export default {
           context:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
         },
         {
-          id:1,
-          name:'Python',
+          id:3,
+          name:'SQL',
           time:'full',
           type:'certificate',
           context:'Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.'
         },{
-          id:2,
-          name:'C++ Programming',
+          id:4,
+          name:'Human Computer Interaction',
           time:'part',
           type:'postgraduate',
           context:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
