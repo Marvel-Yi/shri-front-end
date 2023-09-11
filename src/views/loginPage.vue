@@ -7,11 +7,11 @@
   <div>
     <div>
     <el-input class="login-input"
-              v-model="this.$data.loginForm.loginEmail"
-              placeholder="Please Input Your Email">
+              v-model="this.$data.loginForm.userName"
+              placeholder="Please Input Your UserName">
       <template #prefix>
         <el-icon>
-          <Message/>
+          <Avatar/>
         </el-icon>
       </template>
     </el-input>
@@ -37,18 +37,19 @@
 </template>
 
 <script >
-import { Lock,Message } from '@element-plus/icons-vue'
+import {Avatar, Lock, Message} from '@element-plus/icons-vue'
 import {loginUser} from "../api/user.js";
 export default {
   name: "loginPage",
   components: {
+    Avatar,
     Lock,
     Message
   },
   data(){
     return {
       loginForm:{
-        loginEmail:'',
+        userName:'',
         loginPassword:''
       }
     }
@@ -57,7 +58,7 @@ export default {
     handleLogin(){
       var that=this
       const loginInfo = {
-        userName: this.loginForm.loginEmail,
+        userName: this.loginForm.userName,
         password: this.loginForm.loginPassword,
       }
       loginUser(loginInfo).then(res=>{
