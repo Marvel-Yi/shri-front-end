@@ -8,7 +8,7 @@
       <div style="margin-top: 20px">
         <el-input class="login-input"
                   v-model="this.$data.userName"
-                  show-password
+
                   placeholder="Please Input Your Username">
           <template #prefix>
             <el-icon>
