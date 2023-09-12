@@ -18,14 +18,13 @@
       style="position: fixed;top: 0;z-index: 9;width: 100%"
   >
     <el-menu-item index="/home" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Courses</div></el-menu-item>
-    <el-menu-item index="/courseInfo"><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Course Info</div></el-menu-item>
 
     <div v-if="!this.$data.login">
     <el-button style="position:absolute;right: 30px;top: 15px" @click="this.$router.push('/login')">login</el-button>
     <el-button style="position:absolute;right: 120px;top: 15px" @click="this.$router.push('/register')">register</el-button>
     </div>
     <div v-if="this.$data.login">
-      <div style="position:absolute;right:130px;top:20px;">Hello, user123435322</div>
+      <div style="position:absolute;right:130px;top:20px;">Hello, {{ userName }}</div>
       <el-button style="position:absolute;right: 30px;top: 15px" @click="handleLogout">logout</el-button>
     </div>
 

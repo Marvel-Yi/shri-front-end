@@ -44,8 +44,10 @@
         <el-card v-for="(item,index) in this.$data.courseList" style="margin-top: 20px;border:0px;border-radius: 15px;cursor: pointer" shadow="hover"
                  @click="handleClickProgramme(item)">
           <el-container>
-            <el-header height="10px" style="text-align: left;font-size: 16px;font-weight: bold">{{ item.name }}</el-header>
-            <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }}  | {{item.certificateType}}</div>
+            <!--<el-header  style="text-align: left;font-size: 16px;font-weight: bold;min-height: 10px">{{ item.name }}</el-header>-->
+            <el-main  style="text-align: left">
+              <div style="text-align: left;font-size: 16px;font-weight: bold;min-height: 10px;margin-bottom: 10px;">{{ item.name }}</div>
+              <div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }}  | {{item.certificateType}}</div>
               <div>{{ item.programmeNotes }}</div></el-main>
           </el-container>
 
