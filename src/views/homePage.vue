@@ -44,9 +44,9 @@
         <el-card v-for="(item,index) in this.$data.courseList" style="margin-top: 20px;border:0px;border-radius: 15px;cursor: pointer" shadow="hover"
                  @click="handleClickProgramme(item)">
           <el-container>
-            <el-header height="10px" style="text-align: left;font-size: 18px;font-weight: bold">{{ item.name }}</el-header>
-            <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }} time | {{item.certificateTypes}}</div>
-              <div>{{ item.context }}</div></el-main>
+            <el-header height="10px" style="text-align: left;font-size: 16px;font-weight: bold">{{ item.name }}</el-header>
+            <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }}  | {{item.certificateType}}</div>
+              <div>{{ item.programmeNotes }}</div></el-main>
           </el-container>
 
         </el-card>
@@ -68,15 +68,15 @@ export default {
         {
           id:1,
           name:'Python',
-          studyMode:'full',
-          certificateTypes:'certificate',
-          context:'Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.'
+          studyMode:'full-time',
+          certificateType:'certificate',
+          programmeNotes:'Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.'
         },{
           id:2,
           name:'C++ Programming',
-          studyMode:'part',
-          certificateTypes:'postgraduate',
-          context:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
+          studyMode:'part-time',
+          certificateType:'postgraduate',
+          programmeNotes:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
         },
       ],
       checkBoxList: {
