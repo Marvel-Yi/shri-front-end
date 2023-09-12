@@ -42,6 +42,7 @@
           </template>
         </el-input>
       </div>
+      <!--
       <div style="margin-top: 20px">
         <el-input class="login-input"
                   v-model="this.$data.confirmPassword"
@@ -54,6 +55,7 @@
           </template>
         </el-input>
       </div>
+      -->
       <div style="margin-top: 20px;">
         <el-button color="#303f9f" style="font: 20px 'Comic Sans MS';width: 350px;height: 50px" @click="handleRegister">CREATE ACCOUNT</el-button>
       </div>
@@ -89,13 +91,14 @@ export default {
         confirmPassword:this.$data.confirmPassword
       }
       register(registerForm).then(res=>{
-        if(res.code===0){
+        console.log(res)
+        if(res.data.code===0){
           //todo success
           this.$router.push('/login')
         }else{
           //todo
           console.log("register failed")
-          this.$message.error(res.msg)
+          this.$message.error(res.data.msg)
         }
       })
     }

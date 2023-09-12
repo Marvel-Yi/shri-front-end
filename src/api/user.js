@@ -8,7 +8,7 @@ export const loginUser = loginInfo => {
     /**
      * url瞎写的
      */
-    return axios.post(`http://192.168.1.39:8080/login`, {
+    return axios.post(`http://127.0.0.1:8080/login`, {
         userName,
         password,
     }).then(res => {
