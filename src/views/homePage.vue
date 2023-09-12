@@ -15,7 +15,7 @@
                   <div>
                   <el-checkbox v-model="checkBoxList.studyMode.full" label="full time"  @change="modeCodeChange"/></div>
                   <div>
-                    <el-checkbox v-model="checkBoxList.studyMode.part" label="part time" /></div>
+                    <el-checkbox v-model="checkBoxList.studyMode.part" label="part time" @change="modeCodeChange"/></div>
 
                 </el-main>
               </el-container>
@@ -39,13 +39,13 @@
       </div></el-col>
       <el-col :span="17">
         <div  style="border: 0px;border-radius: 15px;background-color: white;text-align: left;padding: 10px;padding-left: 30px">
-          <span style="font-size: 19px;font-weight: bold">Online Courses</span>
+          <span style="font-size: 19px;font-weight: bold">Programmes</span>
         </div>
         <el-card v-for="(item,index) in this.$data.courseList" style="margin-top: 20px;border:0px;border-radius: 15px;cursor: pointer" shadow="hover"
                  @click="handleClickProgramme(item)">
           <el-container>
             <el-header height="10px" style="text-align: left;font-size: 18px;font-weight: bold">{{ item.name }}</el-header>
-            <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }} time | {{item.certificateType}}</div>
+            <el-main  style="text-align: left"><div style="font-size: 14px;color: gray;margin-bottom: 5px">{{ item.studyMode }} time | {{item.certificateTypes}}</div>
               <div>{{ item.context }}</div></el-main>
           </el-container>
 
@@ -69,13 +69,13 @@ export default {
           id:1,
           name:'Python',
           studyMode:'full',
-          certificateType:'certificate',
+          certificateTypes:'certificate',
           context:'Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.'
         },{
           id:2,
           name:'C++ Programming',
           studyMode:'part',
-          certificateType:'postgraduate',
+          certificateTypes:'postgraduate',
           context:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
         },
       ],
@@ -99,11 +99,11 @@ export default {
       current:1,
       limit:10,
     studyMode:this.$data.modeCode,
-    certificateType:this.typeList
+    certificateTypes:this.typeList
   }
 
     getCourses(courseParams).then(res=>{
-      console.log(res)
+      this.$data.courseList = res.data.data
 
     })
   },
@@ -123,7 +123,7 @@ export default {
         current:1,
         limit:10,
         studyMode:this.$data.modeCode,
-        certificateType:this.typeList
+        certificateTypes:this.typeList
       }
       getCourses(courseParams).then(res=>{
         if(res.code===-1){
@@ -132,9 +132,10 @@ export default {
           this.$router.push('/login')
         }else {
           console.log(res)
-          this.$data.courseList = res.data.courseList
+          this.$data.courseList = res.data.data
         }
       })
+      console.log(this.$data.courseList)
     },
     modeCodeChange(){
       /**
@@ -148,7 +149,7 @@ export default {
        *         }
        *       }
        */
-      if(this.$data.checkBoxList.studyMode.full^this.$data.checkBoxList.studyMode.part){
+      if(!(this.$data.checkBoxList.studyMode.full^this.$data.checkBoxList.studyMode.part)){
         this.$data.modeCode=''
       }else{
         if(this.$data.checkBoxList.studyMode.full){
@@ -161,7 +162,7 @@ export default {
         current:1,
         limit:10,
         studyMode:this.$data.modeCode,
-        certificateType:this.typeList
+        certificateTypes:this.typeList
       }
       getCourses(courseParams).then(res=>{
         if(res.code===-1){
@@ -170,9 +171,10 @@ export default {
           this.$router.push('/login')
         }else {
           console.log(res)
-          this.$data.courseList = res.data.courseList
+          this.$data.courseList = res.data.data
         }
       })
+      console.log(this.$data.courseList)
     },
     handleClickProgramme(item){
       window.localStorage.setItem('course',JSON.stringify(item))

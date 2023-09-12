@@ -4,13 +4,13 @@ export const getCourses = filterParams =>{
         current,
         limit,
         studyMode, // string
-        certificateType // list<string> full-time part-time
+        certificateTypes // list<string> full-time part-time
     }=filterParams;
     return axios.post(`http://127.0.0.1:8080/programmeList`,{
         current,
         limit,
         studyMode,
-        certificateType
+        certificateTypes
     }).then(res=>{
         return res
     })
