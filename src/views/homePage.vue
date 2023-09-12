@@ -91,8 +91,21 @@ export default {
         },
       },
       typeList:[],
-      modeCode:0
+      modeCode:''
     }
+  },
+  mounted(){
+    const courseParams={
+      current:1,
+      limit:10,
+    studyMode:this.$data.modeCode,
+    certificateType:this.typeList
+  }
+
+    getCourses(courseParams).then(res=>{
+      console.log(res)
+
+    })
   },
   methods:{
     handleTypeChange(){
@@ -107,6 +120,8 @@ export default {
         this.$data.typeList.push('postgraduate')
       }
       const courseParams={
+        current:1,
+        limit:10,
         studyMode:this.$data.modeCode,
         certificateType:this.typeList
       }
@@ -122,16 +137,29 @@ export default {
       })
     },
     modeCodeChange(){
+      /**
+       * if(this.$data.checkBoxList.studyMode.full^this.$data.checkBoxList.studyMode.part){
+       *         this.$data.modeCode=0
+       *       }else{
+       *         if(this.$data.checkBoxList.studyMode.full){
+       *           this.$data.modeCode=1
+       *         }else {
+       *           this.$data.modeCode=2
+       *         }
+       *       }
+       */
       if(this.$data.checkBoxList.studyMode.full^this.$data.checkBoxList.studyMode.part){
-        this.$data.modeCode=0
+        this.$data.modeCode=''
       }else{
         if(this.$data.checkBoxList.studyMode.full){
-          this.$data.modeCode=1
+          this.$data.modeCode='full-time'
         }else {
-          this.$data.modeCode=2
+          this.$data.modeCode='part-time'
         }
       }
       const courseParams={
+        current:1,
+        limit:10,
         studyMode:this.$data.modeCode,
         certificateType:this.typeList
       }

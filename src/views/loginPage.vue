@@ -69,7 +69,7 @@ export default {
 
         }else {
           window.localStorage.setItem('login','true')
-          localStorage.setItem('userName',res.data.data.userName)
+          localStorage.setItem('userName',res.data.userName)
           that.$message.success("welcome back")
           that.$router.push({path: '/home'})
         }
