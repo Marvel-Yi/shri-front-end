@@ -18,6 +18,9 @@
       style="position: fixed;top: 0;z-index: 9;width: 100%"
   >
     <el-menu-item index="/home" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Courses</div></el-menu-item>
+    <el-menu-item index="/message" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Message</div></el-menu-item>
+    <el-menu-item index="/reply" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Reply</div></el-menu-item>
+
 
     <div v-if="!this.$data.login">
     <el-button style="position:absolute;right: 30px;top: 15px" @click="this.$router.push('/login')">login</el-button>

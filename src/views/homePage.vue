@@ -1,5 +1,23 @@
 <template>
   <div style="height: 60px"></div>
+  <el-button @click="consultVisible=true"  style="position: absolute; bottom: 30px;right: 30px;width: 70px;height: 70px" circle type="primary"><el-icon :size="30"><Message></Message></el-icon></el-button>
+  <el-dialog
+      v-model="consultVisible"
+      title="Submit a Counselling"
+      width="30%"
+  >
+    <div>
+      <el-input v-model='consultForm.message' placeholder="Please input" type="textarea" style="width: 90%"></el-input>
+    </div>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="consultVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="consultVisible = false">
+          Confirm
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
   <div style="margin-top: 30px">
     <el-row :gutter="20" style="width: 60%;margin-left: 20%;" >
       <el-col :span="7"><div  style="background-color: white;border-radius: 15px">
@@ -60,10 +78,12 @@
 
 <script>
 import {getCourses} from "../api/course.js";
+import {Message} from "@element-plus/icons-vue";
 
 
 export default {
   name: "homePage",
+  components: {Message},
   data(){
     return {
       courseList:[
@@ -93,7 +113,11 @@ export default {
         },
       },
       typeList:[],
-      modeCode:''
+      modeCode:'',
+      consultVisible:false,
+      consultForm:{
+        message:''
+      }
     }
   },
   mounted(){

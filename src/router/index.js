@@ -34,6 +34,20 @@ const routes = [
         meta: {
             showNavi: true
         }
+    },{
+        path:'/message',
+        name:'message',
+        component:()=> import('../views/message.vue'),
+        meta: {
+            showNavi: true
+        }
+    },{
+        path: '/reply',
+        name:'reply',
+        component:()=> import('../views/replyPage.vue'),
+        meta:{
+            showNavi: true
+        }
     }
 ]
 export const router = createRouter({
