@@ -72,7 +72,7 @@ export default {
           localStorage.setItem('userName',res.data.userName)
           localStorage.setItem('userEmail',res.data.userMail)
           localStorage.setItem('userType', res.data.userType)
-
+          document.cookie='ticket'+"="+res.data.msg+';path=/'
           that.$message.success("welcome back")
           that.$router.push({path: '/home'})
         }

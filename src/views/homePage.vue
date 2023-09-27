@@ -142,7 +142,7 @@ export default {
         content:this.$data.consultForm.message
       }
       submitConsult(consultInfo).then(res=>{
-        if(res.code===-1){
+        if(res.data.code===-1){
           //redirect to login
         }else{
           this.$message.success('successfully submitted!')
@@ -169,7 +169,7 @@ export default {
         certificateTypes:this.typeList
       }
       getCourses(courseParams).then(res=>{
-        if(res.code===-1){
+        if(res.data.code===-1){
           localStorage.removeItem('login')
           localStorage.removeItem('userName')
           this.$router.push('/login')
@@ -208,7 +208,7 @@ export default {
         certificateTypes:this.typeList
       }
       getCourses(courseParams).then(res=>{
-        if(res.code===-1){
+        if(res.data.code===-1){
           localStorage.removeItem('login')
           localStorage.removeItem('userName')
           this.$router.push('/login')
