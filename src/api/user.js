@@ -38,13 +38,17 @@ export const checkCookieValid=()=>{
     })
 }
 
-export const submitConsult=consultInfo=>{
+export const submitConsult = consultInfo=>{
     const{
         userName,
         userEmail,
         content
     }=consultInfo;
-    return axios.post(`http://127.0.0.1:8080/interest/enquire`).then(res=>{
+    return axios.post(`http://127.0.0.1:8080/interest/enquire`,{
+        userName,
+        userEmail,
+        content
+    }).then(res=>{
         return res
     })
 }
