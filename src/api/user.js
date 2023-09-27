@@ -37,3 +37,14 @@ export const checkCookieValid=()=>{
         return res
     })
 }
+
+export const submitConsult=consultInfo=>{
+    const{
+        userName,
+        userEmail,
+        content
+    }=consultInfo;
+    return axios.post(`http://127.0.0.1:8080/consult`).then(res=>{
+        return res
+    })
+}

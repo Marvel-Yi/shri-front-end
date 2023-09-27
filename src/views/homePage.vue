@@ -12,7 +12,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="consultVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="consultVisible = false">
+        <el-button type="primary" @click="submitConsult()">
           Confirm
         </el-button>
       </span>
@@ -79,6 +79,7 @@
 <script>
 import {getCourses} from "../api/course.js";
 import {Message} from "@element-plus/icons-vue";
+import {submitConsult} from "../api/user.js";
 
 
 export default {
@@ -134,6 +135,22 @@ export default {
     })
   },
   methods:{
+    submitConsult(){
+      const consultInfo={
+        userName:localStorage.getItem('userName'),
+        userEmail:localStorage.getItem('userEmail'),
+        content:this.$data.consultForm.message
+      }
+      submitConsult(consultInfo).then(res=>{
+        if(res.code===-1){
+          //redirect to login
+        }else{
+          this.$message.success('successfully submitted!')
+          this.$data.consultVisible=false
+        }
+      })
+      this.$data.consultForm.message=''
+    },
     handleTypeChange(){
       this.$data.typeList=[]
       if(this.$data.checkBoxList.type.certificate){

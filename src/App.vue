@@ -16,6 +16,7 @@
       mode="horizontal"
       router
       style="position: fixed;top: 0;z-index: 9;width: 100%"
+
   >
     <el-menu-item index="/home" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Courses</div></el-menu-item>
     <el-menu-item index="/message" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Message</div></el-menu-item>
@@ -28,7 +29,7 @@
     </div>
     <div v-if="this.$data.login">
       <div style="position:absolute;right:130px;top:20px;">Hello, {{ userName }}</div>
-      <el-button style="position:absolute;right: 30px;top: 15px" @click="handleLogout">logout</el-button>
+      <el-button style="position:absolute;right: 30px;top: 15px" @click="handleLogout()">logout</el-button>
     </div>
 
   </el-menu>
