@@ -44,7 +44,7 @@ export const submitConsult=consultInfo=>{
         userEmail,
         content
     }=consultInfo;
-    return axios.post(`http://127.0.0.1:8080/consult`).then(res=>{
+    return axios.post(`http://127.0.0.1:8080/interest/enquire`).then(res=>{
         return res
     })
 }
