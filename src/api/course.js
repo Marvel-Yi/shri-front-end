@@ -6,7 +6,7 @@ export const getCourses = filterParams =>{
         studyMode, // string
         certificateTypes // list<string> full-time part-time
     }=filterParams;
-    return axios.post(`http://127.0.0.1:8080/programmeList`,{
+    return axios.post(`http://127.0.0.1:8080/programme/list`,{
         current,
         limit,
         studyMode,
