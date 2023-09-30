@@ -44,7 +44,8 @@ export const submitConsult = consultInfo=>{
         userEmail,
         content
     }=consultInfo;
-    return axios.post(`http://127.0.0.1:8080/interest/enquire`,{
+    return axios.post(`http://127.0.0.1:8080/interest/enquire`,
+        {
         userName,
         userEmail,
         content
