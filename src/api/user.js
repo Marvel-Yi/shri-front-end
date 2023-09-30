@@ -50,7 +50,7 @@ export const submitConsult = consultInfo=>{
         content
     },{
         headers:{
-            'ticket':localStorage.getItem('ticket')
+            'cookie':localStorage.getItem('cookie')
         }
     }).then(res=>{
         return res
