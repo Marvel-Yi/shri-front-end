@@ -22,6 +22,9 @@
     <el-menu-item index="/message" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Message</div></el-menu-item>
     <el-menu-item index="/reply" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Reply</div></el-menu-item>
     <el-menu-item index="/application" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Application</div></el-menu-item>
+    <el-menu-item index="/materials" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">materials</div></el-menu-item>
+    <el-menu-item index="/showApplication" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">showApplication</div></el-menu-item>
+    <el-menu-item index="/allApplications" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">allApplications</div></el-menu-item>
 
 
     <div v-if="!this.$data.login">

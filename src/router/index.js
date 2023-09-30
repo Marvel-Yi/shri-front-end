@@ -55,7 +55,30 @@ const routes = [
         meta:{
             showNavi: true
         }
-    }
+    },
+    {
+        path: '/materials',
+        name:'materials',
+        component:()=> import('../views/addMaterials.vue'),
+        meta:{
+            showNavi: true
+        }
+    },{
+        path: '/showApplication',
+        name:'showApplication',
+        component:()=> import('../views/showApplication.vue'),
+        meta:{
+            showNavi: true
+        }
+    },{
+        path: '/allApplications',
+        name:'allApplications',
+        component:()=> import('../views/allApplications.vue'),
+        meta:{
+            showNavi: true
+        }
+    },
+
 ]
 export const router = createRouter({
     history: createWebHistory(),

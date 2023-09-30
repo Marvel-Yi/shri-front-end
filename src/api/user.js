@@ -48,6 +48,10 @@ export const submitConsult = consultInfo=>{
         userName,
         userEmail,
         content
+    },{
+        headers:{
+            'ticket':localStorage.getItem('ticket')
+        }
     }).then(res=>{
         return res
     })
