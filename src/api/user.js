@@ -1,5 +1,6 @@
 import axios from 'axios'
-axios.defaults.withCredentials = true
+import app from "../App.vue";
+axios.defaults.withCredentials=true
 export const loginUser = loginInfo => {
     const {
         userName,
@@ -44,7 +45,8 @@ export const submitConsult = consultInfo=>{
         userEmail,
         content
     }=consultInfo;
-    return axios.post(`http://127.0.0.1:8080/interest/enquire`,{
+    return axios.post(`http://127.0.0.1:8080/interest/enquire`,
+        {
         userName,
         userEmail,
         content
@@ -53,6 +55,14 @@ export const submitConsult = consultInfo=>{
             'cookie':localStorage.getItem('cookie')
         }
     }).then(res=>{
+        return res
+    })
+}
+export const applyProgramme=applyInfo=>{
+    const{
+        programmeId
+    }=applyInfo;
+    return axios.post(`http://127.0.0.1:8080/apply`,{programmeId}).then(res=>{
         return res
     })
 }

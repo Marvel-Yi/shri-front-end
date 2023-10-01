@@ -93,13 +93,48 @@ export default {
           name:'Python',
           studyMode:'full-time',
           certificateType:'certificate',
-          programmeNotes:'Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.'
+          programmeNotes:'The Certificate in Payroll Administration (CPA) is designed to cover the various methodologies, techniques, ' +
+              'payroll administration systems, legal issues, statutory laws, and latest trends. This course will also include a short demo session on the user-friendly ' +
+              'architecture of payroll software so that participants can appreciate the functions of this software. Finance and HR professionals should understand and implement ' +
+              'payroll administration to meet legal and organisational needs. ' +
+              'It also trains payroll staff to manage their employees’ salaries and benefits, including their employers’.',
+          commitmentMonths:2,
+          intakes:10,
+          intakeDate:'2023-01-01',
+          cpdHours:20,
+          fee:2000,
+          graduateStuCnt:100,
+          objective:'',
+          whoShouldAttend:'HR professionals and support staff who wish to understand and implement payroll administration to meet legislative requirements and ' +
+              'organisation compensation operational needs. It is also appropriate for finance professionals and support staff who are responsible for payroll operations.',
+          courseBeginTime:'2023-01-01',
+          courseEndTime:'2023-12-12',
+          assessment:'Candidates are assessed by a group assignment and formal written examination',
+          deliveryMode:'Face-to-Face',
+          curStudentCnt:20,
+          curTeacherCnt:3,
+          certificateBy:'shri academy'
         },{
           id:2,
           name:'C++ Programming',
           studyMode:'part-time',
           certificateType:'postgraduate',
-          programmeNotes:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.'
+          programmeNotes:'C++ (/ˈsiː plʌs plʌs/, pronounced "C plus plus" and sometimes abbreviated as CPP) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.',
+          commitmentMonths:2,
+          intakes:10,
+          intakeDate:'2023-01-01',
+          cpdHours:20,
+          fee:2000,
+          graduateStuCnt:100,
+          objective:'',
+          whoShouldAttend:'HR professionals and support staff...',
+          courseBeginTime:'2023-01-01',
+          courseEndTime:'2023-12-12',
+          assessment:'Candidates are assessed by a group assignment and formal written examination',
+          deliveryMode:'Face-to-Face',
+          curStudentCnt:20,
+          curTeacherCnt:3,
+          certificateBy:'shri academy'
         },
       ],
       checkBoxList: {

@@ -64,16 +64,23 @@ export default {
     this.$data.userName=localStorage.getItem('userName')
     console.log('login'+this.$data.login)
   },
+  updated() {
+    this.$data.login=localStorage.getItem('login')
+    this.$data.userName=localStorage.getItem('userName')
+  },
   methods:{
     handleLogout(){
-      this.$router.push('/login')
+      //this.$router.push('/login')
       window.localStorage.removeItem('userName');
       window.localStorage.removeItem('login')
+      window.localStorage.removeItem('userEmail')
+      window.localStorage.removeItem('userRole')
       this.$data.login=''
       this.$data.userName=''
       console.log('logout')
       this.$forceUpdate()
-    }
+    },
+
   }
 }
 </script>

@@ -158,7 +158,8 @@ export default {
     }
   },
   created() {
-    //getApplicationInfo()
+    //getApplicationInfo(this.$route.query.id)
+    console.log(this.$route.query.id)
   }
 
 }

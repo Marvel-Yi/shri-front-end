@@ -5,7 +5,7 @@
     <span>{{ courseInfo.name }}</span>
     </div>
     <div style="margin-top: 50px">
-      <el-button color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white">Apply Now</el-button></div>
+      <el-button color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white" @click="apply()">Apply Now</el-button></div>
   </div>
   <el-affix :offset="59">
     <div class="vertical-bar" style="background-color: #2E294E;height: 60px;width: 100%">
@@ -39,20 +39,63 @@
         <el-col :span="3">
           <el-button color="#ffb300"
                      style="font-size: 15px;width: 140px;height: 40px;font-family:'Comic Sans MS',serif;
-                     border-radius: 20px;border: 2px solid white;margin-top: 10px;font-weight: bold">Apply Now</el-button>
+                     border-radius: 20px;border: 2px solid white;margin-top: 10px;font-weight: bold" @click="apply()">Apply Now</el-button>
         </el-col>
       </el-row>
     </div>
   </el-affix>
-  <div class="content-container">
+  <div class="content-container" style="width: 45%;margin:auto;margin-top: 40px">
     <div class="course-overview" v-if="tabsStatic.courseOverview">
-    <el-row :gutter="20" style="width: 50%;margin:auto;margin-top: 40px">
-      <el-col :span="6"> <el-statistic title="COMMITMENT" value="3 Months" value-style="font-size:30px"></el-statistic></el-col>
-      <el-col :span="6"> <el-statistic title="NEXT INTAKE" :value="tabsStatic.Fundings" value-style="font-size:30px"></el-statistic></el-col>
-      <el-col :span="6"> <el-statistic title="CPD HOURS" value="54 Hours" value-style="font-size:30px"></el-statistic></el-col>
-      <el-col :span="6"> <el-statistic title="PROGRAMME FEE" value="$1,600" value-style="font-size:30px"></el-statistic></el-col>
+    <el-row :gutter="20">
+      <el-col :span="6">
+        <el-statistic title="COMMITMENT" :value="this.$data.courseInfo.commitmentMonths+' Months'" value-style="font-size:30px"> </el-statistic>
+        <div>{{this.$data.courseInfo.cpdHours}} training hours</div>
+      </el-col>
+      <el-col :span="6">
+        <el-statistic title="NEXT INTAKE" :value="this.$data.courseInfo.intakeDate" value-style="font-size:30px"></el-statistic>
+        <div v-if="this.$data.courseInfo.intakes===11||this.$data.courseInfo.intakes===12||this.$data.courseInfo.intakes===13">{{this.$data.courseInfo.intakes}}th</div>
+        <div v-else-if="this.$data.courseInfo.intakes%10===1">{{this.$data.courseInfo.intakes}}st</div>
+        <div v-else-if="this.$data.courseInfo.intakes%10===2">{{this.$data.courseInfo.intakes}}nd</div>
+        <div v-else-if="this.$data.courseInfo.intakes%10===3">{{this.$data.courseInfo.intakes}}rd</div>
+        <div v-else>{{this.$data.courseInfo.intakes}}th</div>
+      </el-col>
+      <el-col :span="6">
+        <el-statistic title="CPD HOURS" :value="this.$data.courseInfo.cpdHours" value-style="font-size:30px"></el-statistic>
+        <div>HR-related training hours</div>
+      </el-col>
+      <el-col :span="6">
+        <el-statistic title="PROGRAMME FEE" :value="'$'+this.$data.courseInfo.fee" value-style="font-size:30px"></el-statistic>
+        <div>Before GST</div>
+      </el-col>
     </el-row>
+      <div
+          style="margin-top: 80px;
+          border: 1px black solid;
+          padding: 8px;
+          border-radius: 15px;font-family: 'Comic Sans MS',serif;font-size: 20px">{{this.$data.courseInfo.graduateStuCnt}} students have graduated from this programme</div>
+
+      <div style="text-align: left;margin-top: 80px;font-family: Verdana,serif;font-size: 19px">{{this.$data.courseInfo.programmeNotes}}</div>
+      <div style="background-color: #E4F2FF;margin-top: 80px;font-family: Verdana,serif">
+        <div style="font-size: 25px;font-weight: bold;padding: 10px">Who Should Attend?</div>
+        <div style="width: 80%;margin: auto;font-size: 19px">
+          {{this.$data.courseInfo.whoShouldAttend}}</div>
+      </div>
+      <div style="margin-top: 80px">
+        <div style="text-align: left;font-size: 40px;font-family: system-ui,serif;font-weight: bold;">Assessment</div>
+        <div style="font-size: 19px;margin-top: 30px;">{{this.$data.courseInfo.assessment}}</div>
+      </div>
+
+      <div style="margin-top: 80px">
+        <div style="text-align: left;font-size: 40px;font-family: system-ui,serif;font-weight: bold;">Delivery Mode</div>
+
+        <div style="font-size: 19px;margin-top: 30px;">
+          <img src="https://shri.org.sg/wp-content/uploads/2022/08/F2F.png" style="width: 60px">
+          <div style="margin-top: 10px">
+            {{this.$data.courseInfo.deliveryMode}}</div></div>
+      </div>
     </div>
+
+
     <div v-if="tabsStatic.Admission">
       Admission
     </div>
@@ -70,6 +113,8 @@
 
 <script>
 
+
+import {applyProgramme} from "../api/user.js";
 
 export default {
   name: "courseInfo",
@@ -140,6 +185,14 @@ export default {
         this.$data.tabsStatic.Fundings=false;
         this.$data.tabsStatic.FAQ=true;
       }
+    },
+    apply(){
+      const applyInfo={
+        programmeId:this.$data.courseInfo.id
+      }
+      applyProgramme(applyInfo).then(res=>{
+        //todo
+      })
     }
   },
 }
