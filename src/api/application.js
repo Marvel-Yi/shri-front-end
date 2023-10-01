@@ -4,3 +4,16 @@ export const getApplicationInfo=(applyId)=>{
         return res
     })
 }
+
+export const submitApplication=applyInfo=>{
+    const{
+        programmeId,
+        appFormData,
+        signature
+    }=applyInfo;
+    return axios.post(`http://127.0.0.1/programme/apply`,{
+        programmeId,
+        appFormData,
+        signature
+    })
+}

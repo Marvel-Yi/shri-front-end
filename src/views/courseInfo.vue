@@ -200,6 +200,7 @@ export default {
     clickApply(){
       if(localStorage.getItem('hasFormData')){
         //has form
+        this.$router.push({path:'/application',query:{programmeId:this.$data.courseInfo.id}})
       }else{
         this.$router.push({path:'/application',query:{programmeId:this.$data.courseInfo.id}})
       }

@@ -62,16 +62,7 @@
             </el-col>
           </el-row>
 
-          <el-row :gutter="20" style="margin-top: 20px">
-            <el-col :span="12">
-              <div>FinNo</div>
-              <div><el-input class="form-input"  v-model="formData.finNo" placeholder="please input FinNo"></el-input></div>
-            </el-col>
-            <el-col :span="12">
-              <div>PassExpire</div>
-              <div><el-input class="form-input"  v-model="formData.passExpire" placeholder="please input PassExpire"></el-input></div>
-            </el-col>
-          </el-row>
+
 
         </div>
       </div>
@@ -132,17 +123,19 @@
         <vue-esign style="border: 1px solid #ddd; ;margin: auto" ref="esign" :isClearBgColor=true></vue-esign>
         <div style="text-align: right;margin-top: 15px" >
           <el-button @click="handleReset()" type="primary">reset</el-button>
-          <el-button @click="handleGenerate()" type="primary">generateImg</el-button>
+
         </div>
       </div>
       </div>
-      <el-button size="large" type="primary" style=" font-size: 18px">submit</el-button>
+      <el-button size="large" type="primary" style=" font-size: 18px" @click="handleSubmitApplication">submit</el-button>
     </el-card>
 
   </div>
 </template>
 
 <script>
+import {submitApplication} from "../api/application.js";
+
 export default {
   name: "applicationPage",
   data(){
@@ -158,6 +151,7 @@ export default {
         resultImg: '',//生成签名图片-base64
       },
       formData:{
+        userId:'',
         passportNo:'',
         passportName:'',
         gender:'',
@@ -176,8 +170,14 @@ export default {
         companyIndustry:'',
         sponsorType:null,
         infoSource:'',
-      }
+      },
+      signImg:'',
+      programmeId: null
     }
+  },
+  mounted() {
+    this.$data.formData.userId=localStorage.getItem('userId')
+    this.$data.programmeId=this.$route.query.programmeId
   },
   methods:{
     handleReset(){
@@ -188,15 +188,31 @@ export default {
       this.isCrop = false
       this.resultImg = ''
     },
-    handleGenerate () {
+
+    handleSubmitApplication(){
       this.$refs.esign.generate().then(res => {  //使用generate将签名导出为图片
         console.log('图片的base64地址', res)
         console.log(this.$refs.esign)
-        this.resultImg = res
+        this.$data.signImg = res
+
       }).catch(err => {
         console.log('画布没有签字时', err)
         alert('请先完成签字！') // 画布没有签字时会执行这里 'Not Signned'
       })
+
+      const applyInfo={
+        programmeId: this.$data.programmeId,
+        appFormData:this.$data.formData,
+        signature:this.$data.signImg
+      }
+      submitApplication(applyInfo).then(res=>{
+        if(res.data.code===0){
+          this.$message.success('successfully applied!')
+        }else {
+          this.$message.error("there's something wrong...")
+        }
+      })
+
     }
 
   }
