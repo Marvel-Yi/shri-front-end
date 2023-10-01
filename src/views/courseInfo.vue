@@ -42,7 +42,7 @@
           <el-button v-if="!this.$data.courseInfo.hasApplied" color="#ffb300"
                      style="font-size: 15px;width: 140px;height: 40px;font-family:'Comic Sans MS',serif;
                      border-radius: 20px;border: 2px solid white;margin-top: 10px;font-weight: bold" @click="clickApply()">Apply Now</el-button>
-          <el-button color="#ffb300"
+          <el-button v-else color="#ffb300"
                      style="font-size: 15px;width: 140px;height: 40px;font-family:'Comic Sans MS',serif;
                      border-radius: 20px;border: 2px solid white;margin-top: 10px;font-weight: bold" >Applied!</el-button>
         </el-col>
