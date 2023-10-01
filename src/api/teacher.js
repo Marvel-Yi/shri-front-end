@@ -2,13 +2,21 @@ import axios from 'axios'
 axios.defaults.withCredentials=true
 export const submitReply = replyInfo=>{
     const {
-        header,
-        body,
-        footer
+        id,
+        response,
+        userEmail
     }=replyInfo;
     return axios.post(`http://127.0.0.1:8080/interest/reply`,{
-        header,
-        body,
-        footer
+        id,
+        response,
+        userEmail
     })
+}
+
+export const getUnprocessed=(current, limit)=>{
+    return axios.get(`http://127.0.0.1:8080/interest/unprocessed?current=${current}&limit=${limit}`)
+}
+
+export const getProcessed=(current, limit)=>{
+    return axios.get(`http://127.0.0.1:8080/interest/processed?current=${current}&limit=${limit}`)
 }
