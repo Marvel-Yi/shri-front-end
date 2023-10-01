@@ -5,13 +5,13 @@ export const submitReply = replyInfo=>{
         id,
         response,
         userEmail,
-        userName
+
     }=replyInfo;
     return axios.post(`http://127.0.0.1:8080/interest/reply`,{
         id,
         response,
         userEmail,
-        userName
+
     })
 }
 

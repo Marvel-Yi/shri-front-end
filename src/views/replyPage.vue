@@ -65,7 +65,6 @@ export default {
         id:this.$data.id,
         response:this.$data.replyForm.body,
         userEmail:this.$data.userEmail,
-        userName:this.$data.userName
       }
       submitReply(replyInfo).then(res=>{
         console.log(res)
