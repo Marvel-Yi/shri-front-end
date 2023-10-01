@@ -16,3 +16,6 @@ export const getCourses = filterParams =>{
         return res
     })
 }
+export const getCourseInfo=(programmeId)=>{
+    return axios.get(`http://127.0.0.1:8080/programme/detail/${programmeId}`)
+}

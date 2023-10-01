@@ -5,7 +5,9 @@
     <span>{{ courseInfo.name }}</span>
     </div>
     <div style="margin-top: 50px">
-      <el-button color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white" @click="clickApply()">Apply Now</el-button></div>
+      <el-button v-if='!this.$data.courseInfo.hasApplied' color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white" @click="clickApply()">Apply Now</el-button>
+      <el-button v-else color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white" >Applied!</el-button>
+    </div>
   </div>
   <el-affix :offset="59">
     <div class="vertical-bar" style="background-color: #2E294E;height: 60px;width: 100%">
@@ -37,9 +39,12 @@
         </el-col>
         <el-col :span="6"></el-col>
         <el-col :span="3">
-          <el-button color="#ffb300"
+          <el-button v-if="!this.$data.courseInfo.hasApplied" color="#ffb300"
                      style="font-size: 15px;width: 140px;height: 40px;font-family:'Comic Sans MS',serif;
                      border-radius: 20px;border: 2px solid white;margin-top: 10px;font-weight: bold" @click="clickApply()">Apply Now</el-button>
+          <el-button color="#ffb300"
+                     style="font-size: 15px;width: 140px;height: 40px;font-family:'Comic Sans MS',serif;
+                     border-radius: 20px;border: 2px solid white;margin-top: 10px;font-weight: bold" >Applied!</el-button>
         </el-col>
       </el-row>
     </div>
@@ -115,6 +120,7 @@
 
 
 import {applyProgramme} from "../api/user.js";
+import {getCourseInfo} from "../api/course.js";
 
 export default {
   name: "courseInfo",
@@ -135,6 +141,9 @@ export default {
   mounted(){
     console.log(this.$route.query.courseId)
     this.$data.courseInfo=JSON.parse(localStorage.getItem('course'))
+    getCourseInfo(this.$route.query.courseId).then(res=>{
+      this.$data.courseInfo=res.data.data
+    })
   },
   /**
    *

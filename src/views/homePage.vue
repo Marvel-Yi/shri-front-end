@@ -113,7 +113,8 @@ export default {
           deliveryMode:'Face-to-Face',
           curStudentCnt:20,
           curTeacherCnt:3,
-          certificateBy:'shri academy'
+          certificateBy:'shri academy',
+          hasApplied:true
         },{
           id:2,
           name:'C++ Programming',
@@ -134,7 +135,9 @@ export default {
           deliveryMode:'Face-to-Face',
           curStudentCnt:20,
           curTeacherCnt:3,
-          certificateBy:'shri academy'
+          certificateBy:'shri academy',
+          hasApplied:false
+
         },
       ],
       checkBoxList: {
