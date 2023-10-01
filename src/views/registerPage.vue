@@ -93,10 +93,10 @@ export default {
       register(registerForm).then(res=>{
         console.log(res)
         if(res.data.code===0){
-          //todo success
+
           this.$router.push('/login')
         }else{
-          //todo
+
           console.log("register failed")
           this.$message.error(res.data.msg)
         }
