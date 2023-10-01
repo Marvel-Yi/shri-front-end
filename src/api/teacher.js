@@ -4,12 +4,14 @@ export const submitReply = replyInfo=>{
     const {
         id,
         response,
-        userEmail
+        userEmail,
+        userName
     }=replyInfo;
     return axios.post(`http://127.0.0.1:8080/interest/reply`,{
         id,
         response,
-        userEmail
+        userEmail,
+        userName
     })
 }
 
