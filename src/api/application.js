@@ -11,7 +11,7 @@ export const submitApplication=applyInfo=>{
         appFormData,
         signature
     }=applyInfo;
-    return axios.post(`http://127.0.0.1/programme/apply`,{
+    return axios.post(`http://127.0.0.1:8080/programme/apply`,{
         programmeId,
         appFormData,
         signature
