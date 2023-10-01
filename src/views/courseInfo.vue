@@ -5,7 +5,7 @@
     <span>{{ courseInfo.name }}</span>
     </div>
     <div style="margin-top: 50px">
-      <el-button v-if='!this.$data.courseInfo.hasApplied' color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white" @click="clickApply()">Apply Now</el-button>
+      <el-button v-if='!this.$data.hasApplied' color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white" @click="clickApply()">Apply Now</el-button>
       <el-button v-else color="#2E294E" style="font-size: 22px;width: 180px;height: 50px;font-family:'Comic Sans MS',serif;border-radius: 20px;border: 2px solid white" >Applied!</el-button>
     </div>
   </div>
@@ -39,7 +39,7 @@
         </el-col>
         <el-col :span="6"></el-col>
         <el-col :span="3">
-          <el-button v-if="!this.$data.courseInfo.hasApplied" color="#ffb300"
+          <el-button v-if="!this.$data.hasApplied" color="#ffb300"
                      style="font-size: 15px;width: 140px;height: 40px;font-family:'Comic Sans MS',serif;
                      border-radius: 20px;border: 2px solid white;margin-top: 10px;font-weight: bold" @click="clickApply()">Apply Now</el-button>
           <el-button v-else color="#ffb300"
@@ -135,14 +135,16 @@ export default {
         Fundings:false,
         FAQ:false
       },
-      courseInfo:{}
+      courseInfo:{},
+      hasApplied:false
     }
   },
   mounted(){
     console.log(this.$route.query.courseId)
     this.$data.courseInfo=JSON.parse(localStorage.getItem('course'))
     getCourseInfo(this.$route.query.courseId).then(res=>{
-      this.$data.courseInfo=res.data.data
+      this.$data.courseInfo=res.data.programme
+      this.$data.hasApplied=res.data.hasApplied
     })
   },
   /**
