@@ -195,23 +195,25 @@ export default {
         console.log(this.$refs.esign)
         this.$data.signImg = res
 
+        const applyInfo={
+          programmeId: this.$data.programmeId,
+          appFormData:this.$data.formData,
+          signature:this.$data.signImg
+        }
+        submitApplication(applyInfo).then(res=>{
+          if(res.data.code===0){
+            this.$message.success('successfully applied!')
+          }else {
+            this.$message.error("there's something wrong...")
+          }
+        })
+
       }).catch(err => {
         console.log('画布没有签字时', err)
         alert('请先完成签字！') // 画布没有签字时会执行这里 'Not Signned'
       })
 
-      const applyInfo={
-        programmeId: this.$data.programmeId,
-        appFormData:this.$data.formData,
-        signature:this.$data.signImg
-      }
-      submitApplication(applyInfo).then(res=>{
-        if(res.data.code===0){
-          this.$message.success('successfully applied!')
-        }else {
-          this.$message.error("there's something wrong...")
-        }
-      })
+
 
     }
 
