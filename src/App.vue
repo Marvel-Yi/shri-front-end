@@ -19,6 +19,7 @@
   >
 
       <el-menu-item index="/home" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Courses</div></el-menu-item>
+      <el-menu-item index="/myApplications" v-if="this.$data.userType==='0'"><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">my Applications</div></el-menu-item>
       <el-menu-item index="/message" v-if="this.$data.userType==='1'"><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Messages</div></el-menu-item>
       <el-menu-item index="/allApplications" v-if="this.$data.userType==='1'"><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Applications</div></el-menu-item>
 

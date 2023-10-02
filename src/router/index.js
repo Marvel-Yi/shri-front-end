@@ -85,6 +85,14 @@ const routes = [
             showNavi: true
         }
     },
+    {
+        path: '/myApplications',
+        name:'myApplications',
+        component:()=> import('../views/myApplications.vue'),
+        meta:{
+            showNavi: true
+        }
+    },
 
 ]
 export const router = createRouter({
