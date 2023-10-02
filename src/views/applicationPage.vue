@@ -195,6 +195,7 @@ export default {
         console.log('图片的base64地址', res)
         console.log(this.$refs.esign)
         this.$data.signImg = res
+        console.log(res)
 
         const applyInfo={
           programmeId: this.$data.programmeId,
