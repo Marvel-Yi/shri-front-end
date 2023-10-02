@@ -17,6 +17,12 @@
               <el-col :span="22">
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
                 <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+                <div><span style="font-weight: bold">status: </span>
+                  <span v-if="item.status===0">under review</span>
+                  <span v-if="item.status===1">pending</span>
+                  <span v-if="item.status===2">rejected</span>
+                  <span v-if="item.status===3">admitted</span>
+                </div>
               </el-col>
             </el-row>
           </el-card>
