@@ -137,7 +137,8 @@ export default {
         FAQ:false
       },
       courseInfo:{},
-      hasApplied:false
+      hasApplied:false,
+      hasFormData:false
     }
   },
   mounted(){
@@ -150,6 +151,7 @@ export default {
       }else {
         this.$data.courseInfo = res.data.programme
         this.$data.hasApplied = res.data.hasApplied
+        this.$data.hasFormData = res.data.hasFormData
       }
     })
   },
@@ -204,7 +206,7 @@ export default {
       }
     },
     clickApply(){
-      if(localStorage.getItem('hasFormData')){
+      if(this.$data.hasFormData){
         //has form
         this.$router.push({path:'/applyNew',query:{programmeId:this.$data.courseInfo.id}})
       }else{

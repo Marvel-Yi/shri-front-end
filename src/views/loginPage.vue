@@ -72,7 +72,7 @@ export default {
           localStorage.setItem('userName',res.data.userName)
           localStorage.setItem('userEmail',res.data.userMail)
           localStorage.setItem('userType', res.data.userType)
-          localStorage.setItem('hasFormDate', res.data.hasFormData)
+
           localStorage.setItem('ticket',res.data.msg)
           localStorage.setItem('userId',res.data.userId)
           document.cookie='ticket'+"="+res.data.msg+';path=/'
