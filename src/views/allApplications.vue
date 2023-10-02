@@ -12,7 +12,11 @@
               <el-col :span="2">
                 <el-icon :size="35" color="rgb(232,155,0)"><WarningFilled></WarningFilled></el-icon>
               </el-col>
-              <el-col :span="22">application from {{item.userName}} to {{item.programmeName}}</el-col>
+              <el-col :span="22">
+                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+              </el-col>
             </el-row>
 
           </el-card>
@@ -26,7 +30,11 @@
               <el-col :span="2">
                 <el-icon :size="35" color="lightblue"><QuestionFilled></QuestionFilled></el-icon>
               </el-col>
-              <el-col :span="22">application from {{item.userName}} to {{item.programmeName}}</el-col>
+              <el-col :span="22">
+                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+              </el-col>
             </el-row>
 
           </el-card>
@@ -40,7 +48,11 @@
               <el-col :span="2">
                 <el-icon :size="35" color="darkred"><CircleCloseFilled></CircleCloseFilled></el-icon>
               </el-col>
-              <el-col :span="22">application from {{item.userName}} to {{item.programmeName}}</el-col>
+              <el-col :span="22">
+                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+              </el-col>
             </el-row>
 
           </el-card>
@@ -54,7 +66,9 @@
               <el-col :span="2">
                 <el-icon :size="35" color="green"><SuccessFilled></SuccessFilled></el-icon>
               </el-col>
-              <el-col :span="22">application from {{item.userName}} to {{item.programmeName}}</el-col>
+              <el-col :span="22"><div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div></el-col>
             </el-row>
 
           </el-card>
@@ -80,11 +94,12 @@ export default {
         userName:'user01',
         userEmail:'111@qq.com',
         programmeId:2,
-        programmeName:'programme01',
+        programmeName:'programme01 jkhsdfj sjdf lkjdf  s',
         signature:'',
         managementSignature:'',
         programmeInChargeSignature:'',
-        status:0//0 未处理；1 处理中；2 拒绝；3 通过
+        status:0,//0 未处理；1 处理中；2 拒绝；3 通过
+        applyDate:'2021-01-01'
       }],
       applicationList1:[{
         id:1,
@@ -92,33 +107,36 @@ export default {
         userName:'user01',
         userEmail:'111@qq.com',
         programmeId:2,
-        programmeName:'programme01',
+        programmeName:'programme01sf  edfsdg sdgsd',
         signature:'',
         managementSignature:'',
         programmeInChargeSignature:'',
-        status:1//0 未处理；1 处理中；2 拒绝；3 通过
+        status:1,//0 未处理；1 处理中；2 拒绝；3 通过
+        applyDate:'2021-01-01'
       }],applicationList2:[{
         id:1,
         userId:1,
         userName:'user01',
         userEmail:'111@qq.com',
         programmeId:2,
-        programmeName:'programme01',
+        programmeName:'programme01 dhdgfh df hs',
         signature:'',
         managementSignature:'',
         programmeInChargeSignature:'',
-        status:2//0 未处理；1 处理中；2 拒绝；3 通过
+        status:2,//0 未处理；1 处理中；2 拒绝；3 通过
+        applyDate:'2021-01-01'
       }],applicationList3:[{
         id:1,
         userId:1,
         userName:'user01',
         userEmail:'111@qq.com',
         programmeId:2,
-        programmeName:'programme01',
+        programmeName:'programme01 dsfgd sfghdfsh ',
         signature:'',
         managementSignature:'',
         programmeInChargeSignature:'',
-        status:3//0 未处理；1 处理中；2 拒绝；3 通过
+        status:3,//0 未处理；1 处理中；2 拒绝；3 通过
+        applyDate:'2021-01-01'
       },]
     }
   },
