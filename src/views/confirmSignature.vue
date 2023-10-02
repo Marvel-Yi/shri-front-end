@@ -181,7 +181,7 @@ export default {
   },
   beforeMount() {
     this.$data.userId=localStorage.getItem('userId')
-    //this.$data.programmeId=this.$route.query.programmeId
+    this.$data.programmeId=this.$route.query.programmeId
   },
   mounted() {
     getForm(this.$data.userId).then(res=>{
