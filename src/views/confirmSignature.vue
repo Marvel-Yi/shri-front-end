@@ -233,7 +233,8 @@ export default {
       })
 **/
       const applyInfo={
-        programmeId: this.$data.programmeId,userId:this.formData.userId,
+        programmeId: this.$data.programmeId,
+        userId:null,
         passportNo:null,
         passportName:null,
         gender:null,
