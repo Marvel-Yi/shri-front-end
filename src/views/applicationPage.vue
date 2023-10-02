@@ -120,7 +120,7 @@
       <span class="title-prefix-_MYP6HvkiQ"></span><span style="font-size: 18px;font-weight: bold">Signature</span>
       <div class="sig-wrapper">
         <div style="margin-top: 10px;margin-bottom: 5px">Please sign here</div>
-        <vue-esign style="border: 1px solid #ddd; ;margin: auto" ref="esign" :isClearBgColor=true></vue-esign>
+        <vue-esign style="border: 1px solid #ddd; ;margin: auto" ref="esign" :isClearBgColor=true :quality="0.1"></vue-esign>
         <div style="text-align: right;margin-top: 15px" >
           <el-button @click="handleReset()" type="primary">reset</el-button>
 
