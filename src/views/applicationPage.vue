@@ -191,7 +191,7 @@ export default {
     },
 
     handleSubmitApplication(){
-      this.$refs.esign.generate().then(res => {  //使用generate将签名导出为图片
+      /**this.$refs.esign.generate().then(res => {  //使用generate将签名导出为图片
         console.log('图片的base64地址', res)
         console.log(this.$refs.esign)
         this.$data.signImg = res
@@ -217,8 +217,21 @@ export default {
         console.log('画布没有签字时', err)
         alert('请先完成签字！') // 画布没有签字时会执行这里 'Not Signned'
       })
-
-
+**/
+      const applyInfo={
+        programmeId: this.$data.programmeId,
+        appFormData:this.$data.formData,
+      }
+      submitApplication(applyInfo).then(res=>{
+        if(res.data.code===0){
+          this.$message.success('successfully applied!')
+        }else if(res.data.code===-1){
+          cleanLocalStorage();
+          this.$router.push('/login')
+        }else{
+          this.$message.error('there is something wrong...')
+        }
+      })
 
     }
 
