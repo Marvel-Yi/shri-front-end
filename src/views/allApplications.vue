@@ -142,35 +142,52 @@ export default {
   },
   mounted() {
     getAllApplication(0,10,1).then(res=>{
+      let i=0
       if(res.data.code===-1){
         cleanLocalStorage();
         this.$router.push('/login')
       }else {
         this.$data.applicationList0 = res.data.data
+        for(i=0;i<this.$data.applicationList0.length;i++){
+          this.$data.applicationList0[i].applyDate=this.$data.applicationList0[i].applyDate.slice(0,10)
+        }
       }
     })
     getAllApplication(1,10,1).then(res=>{
+      let i=0
       if(res.data.code===-1){
         cleanLocalStorage();
         this.$router.push('/login')
       }else {
         this.$data.applicationList1 = res.data.data
+        for(i=0;i<this.$data.applicationList1.length;i++){
+          this.$data.applicationList1[i].applyDate=this.$data.applicationList1[i].applyDate.slice(0,10)
+        }
       }
     })
     getAllApplication(2,10,1).then(res=>{
+      let i=0
       if(res.data.code===-1){
         cleanLocalStorage();
         this.$router.push('/login')
       }else {
         this.$data.applicationList2 = res.data.data
+        for(i=0;i<this.$data.applicationList2.length;i++){
+          this.$data.applicationList2[i].applyDate=this.$data.applicationList2[i].applyDate.slice(0,10)
+        }
       }
     })
     getAllApplication(3,10,1).then(res=>{
+      let i=0
       if(res.data.code===-1){
         cleanLocalStorage();
         this.$router.push('/login')
       }else {
+
         this.$data.applicationList3 = res.data.data
+        for(i=0;i<this.$data.applicationList3.length;i++){
+          this.$data.applicationList3[i].applyDate=this.$data.applicationList3[i].applyDate.slice(0,10)
+        }
       }
     })
   },

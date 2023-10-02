@@ -61,7 +61,11 @@ export default {
   },
   mounted() {
     getMyApplications(localStorage.getItem('userId')).then(res=>{
+      let i=0
       this.$data.applicationList=res.data.data
+      for(i=0;i<this.$data.applicationList.length;i++){
+        this.$data.applicationList[i].applyDate=this.$data.applicationList[i].applyDate.slice(0,10)
+      }
     })
   },
   methods:{
