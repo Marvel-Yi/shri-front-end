@@ -64,16 +64,7 @@
             </el-col>
           </el-row>
 
-          <el-row :gutter="20" style="margin-top: 20px">
-            <el-col :span="12">
-              <div>FinNo</div>
-              <div><el-input class="form-input"  v-model="formData.finNo" placeholder="please input FinNo" disabled></el-input></div>
-            </el-col>
-            <el-col :span="12">
-              <div>PassExpire</div>
-              <div><el-input class="form-input"  v-model="formData.passExpire" placeholder="please input PassExpire" disabled></el-input></div>
-            </el-col>
-          </el-row>
+
 
         </div>
       </div>

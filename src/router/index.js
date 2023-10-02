@@ -77,6 +77,13 @@ const routes = [
         meta:{
             showNavi: true
         }
+    },{
+        path: '/applyNew',
+        name:'applyNew',
+        component:()=> import('../views/confirmSignature.vue'),
+        meta:{
+            showNavi: true
+        }
     },
 
 ]
