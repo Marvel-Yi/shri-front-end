@@ -135,6 +135,7 @@
 
 <script>
 import {submitApplication} from "../api/application.js";
+import {cleanLocalStorage} from "../js/index.js";
 
 export default {
   name: "applicationPage",
@@ -203,8 +204,11 @@ export default {
         submitApplication(applyInfo).then(res=>{
           if(res.data.code===0){
             this.$message.success('successfully applied!')
-          }else {
-            this.$message.error("there's something wrong...")
+          }else if(res.data.code===-1){
+              cleanLocalStorage();
+              this.$router.push('/login')
+          }else{
+            this.$message.error('there is something wrong...')
           }
         })
 

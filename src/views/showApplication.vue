@@ -8,6 +8,17 @@
 
           <el-row  :gutter="20" >
             <el-col :span="12">
+              <div>User Name</div>
+              <div><el-input class="form-input" v-model="userName" placeholder="please input passport No." disabled></el-input></div>
+            </el-col>
+            <el-col :span="12">
+              <div>Programme Name</div>
+              <div><el-input class="form-input" v-model="programmeName" placeholder="please input passport Name" disabled></el-input></div>
+            </el-col>
+          </el-row>
+
+          <el-row  :gutter="20" style="margin-top: 20px">
+            <el-col :span="12">
               <div>Passport No.</div>
               <div><el-input class="form-input" v-model="formData.passportNo" placeholder="please input passport No." disabled></el-input></div>
             </el-col>
@@ -121,12 +132,16 @@
 </template>
 
 <script>
-import {getApplicationInfo} from "../api/application.js";
+import {getApplicationInfo, getForm} from "../api/application.js";
+import {cleanLocalStorage} from "../js/index.js";
 
 export default {
   name: "showApplication",
   data(){
     return {
+      userId:'',
+      userName:'',
+      programmeName:'',
       formData:{
         passportNo:'12432342',
         passportName:'efdsfgsah',
@@ -148,9 +163,23 @@ export default {
       }
     }
   },
-  created() {
+  beforeMount() {
+    console.log(this.$route.query.userId)
+    this.$data.userId=this.$route.query.userId
+    this.$data.userName=this.$route.query.userName
+    this.$data.programmeName=this.$route.query.programmeName
+  },
+  mounted() {
     //getApplicationInfo(this.$route.query.id)
-    console.log(this.$route.query.id)
+
+    getForm(this.$route.query.userId).then(res=>{
+      if(res.data.code===-1){
+        cleanLocalStorage()
+        this.$router.push('/login')
+      }else {
+        this.$data.formData = res.data.data
+      }
+    })
   }
 
 }

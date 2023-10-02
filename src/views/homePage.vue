@@ -80,6 +80,7 @@
 import {getCourses} from "../api/course.js";
 import {Message} from "@element-plus/icons-vue";
 import {submitConsult} from "../api/user.js";
+import {cleanLocalStorage} from "../js/index.js";
 
 
 export default {
@@ -247,8 +248,7 @@ export default {
       }
       getCourses(courseParams).then(res=>{
         if(res.data.code===-1){
-          localStorage.removeItem('login')
-          localStorage.removeItem('userName')
+          cleanLocalStorage()
           this.$router.push('/login')
         }else {
           console.log(res)

@@ -121,6 +121,7 @@
 
 import {applyProgramme} from "../api/user.js";
 import {getCourseInfo} from "../api/course.js";
+import {cleanLocalStorage} from "../js/index.js";
 
 export default {
   name: "courseInfo",
@@ -143,8 +144,13 @@ export default {
     console.log(this.$route.query.courseId)
     this.$data.courseInfo=JSON.parse(localStorage.getItem('course'))
     getCourseInfo(this.$route.query.courseId).then(res=>{
-      this.$data.courseInfo=res.data.programme
-      this.$data.hasApplied=res.data.hasApplied
+      if(res.data.code===-1){
+        cleanLocalStorage()
+        this.$router.push('/login')
+      }else {
+        this.$data.courseInfo = res.data.programme
+        this.$data.hasApplied = res.data.hasApplied
+      }
     })
   },
   /**
@@ -200,7 +206,7 @@ export default {
     clickApply(){
       if(localStorage.getItem('hasFormData')){
         //has form
-        this.$router.push({path:'/application',query:{programmeId:this.$data.courseInfo.id}})
+        this.$router.push({path:'/applyNew',query:{programmeId:this.$data.courseInfo.id}})
       }else{
         this.$router.push({path:'/application',query:{programmeId:this.$data.courseInfo.id}})
       }

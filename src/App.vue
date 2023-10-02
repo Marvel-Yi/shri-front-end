@@ -22,8 +22,8 @@
     <el-menu-item index="/message" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Message</div></el-menu-item>
     <el-menu-item index="/application" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Application</div></el-menu-item>
     <el-menu-item index="/materials" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">materials</div></el-menu-item>
-    <el-menu-item index="/showApplication" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">showApplication</div></el-menu-item>
     <el-menu-item index="/allApplications" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">allApplications</div></el-menu-item>
+    <el-menu-item index="/applyNew" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">new apply</div></el-menu-item>
 
 
     <div v-if="!this.$data.login">
@@ -73,7 +73,10 @@ export default {
       window.localStorage.removeItem('userName');
       window.localStorage.removeItem('login')
       window.localStorage.removeItem('userEmail')
-      window.localStorage.removeItem('userRole')
+      window.localStorage.removeItem('userType')
+      window.localStorage.removeItem('hasFormDate')
+      window.localStorage.removeItem('ticket')
+      window.localStorage.removeItem('userId')
       this.$data.login=''
       this.$data.userName=''
       console.log('logout')

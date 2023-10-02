@@ -22,3 +22,6 @@ export const getUnprocessed=(current, limit)=>{
 export const getProcessed=(current, limit)=>{
     return axios.get(`http://127.0.0.1:8080/interest/processed?current=${current}&limit=${limit}`)
 }
+export const getAllApplication=(status,limit,current)=>{
+    return axios.get(`http://127.0.0.1:8080/programme/application?status=${status}&current=${current}&limit=${limit}`)
+}

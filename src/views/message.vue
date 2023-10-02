@@ -40,6 +40,7 @@
 <script>
 import {SuccessFilled, Warning, WarningFilled} from "@element-plus/icons-vue";
 import {getProcessed, getUnprocessed} from "../api/teacher.js";
+import {cleanLocalStorage} from "../js/index.js";
 export default {
   name: "message",
   components: {WarningFilled, Warning, SuccessFilled},
@@ -86,10 +87,20 @@ export default {
   },
   mounted() {
     getUnprocessed(1,10).then(res=>{
-      this.$data.unReadMessageList=res.data.data
+      if(res.data.code===-1){
+        cleanLocalStorage()
+        this.$router.push('/login')
+      }else {
+        this.$data.unReadMessageList = res.data.data
+      }
     })
     getProcessed(1,10).then(res=>{
-      this.$data.readMessageList=res.data.data
+      if(res.data.code===-1){
+        cleanLocalStorage()
+        this.$router.push('/login')
+      }else {
+        this.$data.readMessageList = res.data.data
+      }
     })
   },
   methods:{

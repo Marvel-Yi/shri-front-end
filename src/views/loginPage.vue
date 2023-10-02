@@ -68,7 +68,7 @@ export default {
           that.$message.error("Login failed, please check your email or password")
 
         }else {
-          window.localStorage.setItem('login','true')
+          localStorage.setItem('login','true')
           localStorage.setItem('userName',res.data.userName)
           localStorage.setItem('userEmail',res.data.userMail)
           localStorage.setItem('userType', res.data.userType)
