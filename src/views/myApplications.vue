@@ -9,7 +9,10 @@
                    @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
             <el-row>
               <el-col :span="2">
-
+                <el-icon :size="35" color="rgb(232,155,0)" v-if="item.status===0"><WarningFilled></WarningFilled></el-icon>
+                <el-icon :size="35" color="lightblue" v-if="item.status===1"><QuestionFilled></QuestionFilled></el-icon>
+                <el-icon :size="35" color="darkred" v-if="item.status===2"><CircleCloseFilled></CircleCloseFilled></el-icon>
+                <el-icon :size="35" color="green" v-if="item.status===3"><SuccessFilled></SuccessFilled></el-icon>
               </el-col>
               <el-col :span="22">
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
@@ -44,7 +47,7 @@ export default {
           signature:'',
           managementSignature:'',
           programmeInChargeSignature:'',
-          status:0,//0 未处理；1 处理中；2 拒绝；3 通过
+          status:3,//0 未处理；1 处理中；2 拒绝；3 通过
           applyDate:'2021-01-01'
         }
       ]
