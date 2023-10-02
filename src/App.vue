@@ -18,12 +18,14 @@
       style="position: fixed;top: 0;z-index: 9;width: 100%"
 
   >
-    <el-menu-item index="/home" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Courses</div></el-menu-item>
-    <el-menu-item index="/message" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Message</div></el-menu-item>
-    <el-menu-item index="/application" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Application</div></el-menu-item>
-    <el-menu-item index="/materials" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">materials</div></el-menu-item>
-    <el-menu-item index="/allApplications" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">allApplications</div></el-menu-item>
-    <el-menu-item index="/applyNew" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">new apply</div></el-menu-item>
+    <div v-if="userType===0||userType===null">
+      <el-menu-item index="/home" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Courses</div></el-menu-item>
+    </div>
+    <div v-else-if="userType===1">
+    <el-menu-item index="/message" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Messages</div></el-menu-item>
+    <el-menu-item index="/allApplications" ><div style="margin-right: 10px;margin-left: 10px;font-size: 16px">Applications</div></el-menu-item>
+    </div>
+
 
 
     <div v-if="!this.$data.login">
@@ -55,17 +57,20 @@ export default {
   data(){
     return{
       login:'',
-      userName:''
+      userName:'',
+      userType:null
     }
   },
   mounted(){
     this.$data.login=localStorage.getItem('login')
     this.$data.userName=localStorage.getItem('userName')
+    this.$data.userType=localStorage.getItem('userType')
     console.log('login'+this.$data.login)
   },
   updated() {
     this.$data.login=localStorage.getItem('login')
     this.$data.userName=localStorage.getItem('userName')
+    this.$data.userType=localStorage.getItem('userType')
   },
   methods:{
     handleLogout(){
