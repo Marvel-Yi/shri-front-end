@@ -220,7 +220,25 @@ export default {
 **/
       const applyInfo={
         programmeId: this.$data.programmeId,
-        appFormData:this.$data.formData,
+        userId:this.formData.userId,
+        passportNo:this.formData.passportNo,
+        passportName:this.formData.passportName,
+        gender:this.formData.gender,
+        country:this.formData.country,
+        birth:this.formData.birth,
+        passType:this.formData.passType,
+        finNo:this.formData.finNo,
+        passExpire:this.formData.passExpire,
+        address:this.formData.address,
+        postalCode:this.formData.postalCode,
+        qualificationCompleteYear:this.formData.qualificationCompleteYear,
+
+        academicInstitutionName:this.formData.academicInstitutionName,
+        academicQualificationName:this.formData.academicQualificationName,
+        companyName:this.formData.companyName,
+        companyIndustry:this.formData.companyIndustry,
+        sponsorType:this.formData.sponsorType,
+        infoSource:this.formData.infoSource,
       }
       submitApplication(applyInfo).then(res=>{
         if(res.data.code===0){
