@@ -9,7 +9,7 @@
                    @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
             <el-row>
               <el-col :span="2">
-                <el-icon :size="35" color="rgb(232,155,0)"><WarningFilled></WarningFilled></el-icon>
+
               </el-col>
               <el-col :span="22">
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
@@ -25,6 +25,10 @@
 </template>
 
 <script>
+
+
+import {getMyApplications} from "../api/application.js";
+
 export default {
   name: "myApplications",
   data(){
@@ -47,6 +51,9 @@ export default {
     }
   },
   mounted() {
+    getMyApplications(localStorage.getItem('userId')).then(res=>{
+      this.$data.applicationList=res.data.data
+    })
   },
   methods:{
     gotoApplicationPage(userId,userName,programmeName){

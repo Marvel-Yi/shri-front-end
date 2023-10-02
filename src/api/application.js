@@ -54,3 +54,6 @@ export const submitApplication=applyInfo=>{
 export const getForm=(userId)=>{
     return axios.get(`http://127.0.0.1:8080/programme/form?userId=${userId}`)
 }
+export const getMyApplications=(userId)=>{
+    return axios.get(`http://127.0.0.1:8080/programme/${userId}`)
+}
