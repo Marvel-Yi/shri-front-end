@@ -1,6 +1,7 @@
 <template>
   <div style="height: 60px"></div>
-  <el-button @click="consultVisible=true"  style="position: absolute; bottom: 30px;right: 30px;width: 70px;height: 70px" circle type="primary"><el-icon :size="30"><Message></Message></el-icon></el-button>
+  <el-button @click="consultVisible=true"  style="position: absolute; bottom: 30px;right: 30px;width: 70px;height: 70px" circle type="primary">
+    <div>submit <br> interest</div></el-button>
   <el-dialog
       v-model="consultVisible"
       title="Submit a Counselling"
