@@ -97,15 +97,18 @@ export default {
       id:null,
       file0:{
         documentType:0,
-        appId:-1
+        appId:-1,
+        userId:-1
       },
       file1:{
         documentType:1,
-        appId:-1
+        appId:-1,
+        userId:-1
       },
       file2:{
         documentType:2,
-        appId:-1
+        appId:-1,
+        userId:-1
       }
 
     }
@@ -113,8 +116,11 @@ export default {
   created() {
     this.$data.id=this.$route.query.id
     this.$data.file0.appId=this.$route.query.id
+    this.$data.file0.userId=localStorage.getItem('userId')
     this.$data.file1.appId=this.$route.query.id
+    this.$data.file1.userId=localStorage.getItem('userId')
     this.$data.file2.appId=this.$route.query.id
+    this.$data.file2.userId=localStorage.getItem('userId')
 
   },
   methods:{
