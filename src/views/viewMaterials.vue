@@ -23,7 +23,7 @@ export default {
   methods:{
     viewFile0(){
       getFile(this.$data.files.file0).then(res=>{
-        const blob=new Blob([res],{type:"application/pdf"})
+        const blob=new Blob([res.data],{type:"application/pdf"})
         let url=window.URL.createObjectURL(blob)
         window.open(url,"_blank")
       })
