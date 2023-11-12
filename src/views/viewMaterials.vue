@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div style="height: 59px"></div>
     <el-button @click="viewFile0">click to view file0</el-button>
   </div>
 
