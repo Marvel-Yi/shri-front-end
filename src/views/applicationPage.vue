@@ -169,7 +169,7 @@ export default {
   mounted() {
     this.$data.formData.userId=localStorage.getItem('userId')
     this.$data.programmeId=this.$route.query.programmeId
-    this.$data.programmeName=this.$route.query.programmeName
+    this.$data.programmeName=JSON.parse(localStorage.getItem('course')).name
   },
   methods:{
     handleReset(){

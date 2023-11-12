@@ -186,7 +186,7 @@ export default {
   beforeMount() {
     this.$data.formData=JSON.parse(localStorage.getItem('applyFormData'))
     this.$data.hasFormData=this.$route.query.hasFormData
-    this.$data.programmeName=this.$route.query.programmeName
+    this.$data.programmeName=JSON.parse(localStorage.getItem('course')).name
     this.$data.userName=localStorage.getItem('userName')
   },
   methods:{handleReset(){
