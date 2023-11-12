@@ -6,23 +6,29 @@
           <el-card shadow="never"
                    v-for="(item,index) in applicationList"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
-                   @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
+                  >
             <el-row>
               <el-col :span="2">
                 <el-icon :size="35" color="rgb(232,155,0)" v-if="item.status===0"><WarningFilled></WarningFilled></el-icon>
-                <el-icon :size="35" color="lightblue" v-if="item.status===1"><QuestionFilled></QuestionFilled></el-icon>
-                <el-icon :size="35" color="darkred" v-if="item.status===2"><CircleCloseFilled></CircleCloseFilled></el-icon>
-                <el-icon :size="35" color="green" v-if="item.status===3"><SuccessFilled></SuccessFilled></el-icon>
+                <el-icon :size="35" color="rgb(232,155,0)" v-if="item.status===1"><WarningFilled></WarningFilled></el-icon>
+                <el-icon :size="35" color="lightblue" v-if="item.status===2"><QuestionFilled></QuestionFilled></el-icon>
+                <el-icon :size="35" color="darkred" v-if="item.status===3"><CircleCloseFilled></CircleCloseFilled></el-icon>
+                <el-icon :size="35" color="green" v-if="item.status===4"><SuccessFilled></SuccessFilled></el-icon>
               </el-col>
-              <el-col :span="22">
+              <el-col :span="19">
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
                 <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
                 <div><span style="font-weight: bold">status: </span>
-                  <span v-if="item.status===0">under review</span>
-                  <span v-if="item.status===1">pending</span>
-                  <span v-if="item.status===2">rejected</span>
-                  <span v-if="item.status===3">admitted</span>
+                  <span v-if="item.status===0">files not uploaded</span>
+                  <span v-if="item.status===1">under review</span>
+                  <span v-if="item.status===2">pending</span>
+                  <span v-if="item.status===3">rejected</span>
+                  <span v-if="item.status===4">admitted</span>
                 </div>
+              </el-col>
+              <el-col :span="3">
+                <el-button type="primary" v-if="item.status===0" @click="addMaterials(item.programmeId)"> add</el-button>
+                <el-button type="primary" v-else  @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)"> check</el-button>
               </el-col>
             </el-row>
           </el-card>
@@ -53,7 +59,20 @@ export default {
           signature:'',
           managementSignature:'',
           programmeInChargeSignature:'',
-          status:3,//0 未处理；1 处理中；2 拒绝；3 通过
+          status:3,//0 未上传材料；1 未处理；2 处理中；3 拒绝；4 通过
+          applyDate:'2021-01-01'
+        },
+        {
+          id:2,
+          userId:1,
+          userName:'user02',
+          userEmail:'121@qq.com',
+          programmeId:3,
+          programmeName:'programme02 jkhsdfj sjdf lkj s',
+          signature:'',
+          managementSignature:'',
+          programmeInChargeSignature:'',
+          status:0,//0 未上传材料；1 未处理；2 处理中；3 拒绝；4 通过
           applyDate:'2021-01-01'
         }
       ]
@@ -71,6 +90,9 @@ export default {
   methods:{
     gotoApplicationPage(userId,userName,programmeName){
       this.$router.push({path:'/showApplication',query:{userId:userId,userName:userName,programmeName:programmeName}})
+    },
+    addMaterials(programmeId){
+      this.$router.push({path:'/materials',query:{id:programmeId}})
     }
   }
 }

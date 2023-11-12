@@ -221,6 +221,7 @@ export default {
       const applyInfo={
         programmeId: this.$data.programmeId,
         userId:this.formData.userId,
+
         passportNo:this.formData.passportNo,
         passportName:this.formData.passportName,
         gender:this.formData.gender,
@@ -240,7 +241,7 @@ export default {
         sponsorType:this.formData.sponsorType,
         infoSource:this.formData.infoSource,
       }
-      submitApplication(applyInfo).then(res=>{
+      /**submitApplication(applyInfo).then(res=>{
         if(res.data.code===0){
           this.$message.success('successfully applied!')
         }else if(res.data.code===-1){
@@ -249,7 +250,11 @@ export default {
         }else{
           this.$message.error('there is something wrong...')
         }
-      })
+      })**/
+
+      localStorage.setItem('applyFormData',JSON.stringify(applyInfo))
+      this.$router.push({path:'/confirmApplication',query:{hasFormData:false}})
+
 
     }
 

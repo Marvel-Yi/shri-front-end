@@ -57,3 +57,60 @@ export const getForm=(userId)=>{
 export const getMyApplications=(userId)=>{
     return axios.get(`http://127.0.0.1:8080/programme/application/${userId}`)
 }
+
+export const updateApplication=()=>{
+    return axios.post(`http://127.0.0.1:8080/programme/application/update`)
+}
+export const submitSignature=sig=>{
+    const {
+        appId,
+        signature
+    }=sig;
+    return axios.post(`http://127.0.0.1:8080/application/sign`,{appId,signature})
+
+}
+export const update=applyInfo=>{
+    const{
+        programmeId,
+        userId,
+        passportNo,
+        passportName,
+        gender,
+        country,
+        birth,
+        passType,
+        finNo,
+        passExpire,
+        address,
+        postalCode,
+        qualificationCompleteYear,
+
+        academicInstitutionName,
+        academicQualificationName,
+        companyName,
+        companyIndustry,
+        sponsorType,
+        infoSource,
+    }=applyInfo;
+    return axios.post(`http://127.0.0.1:8080/programme/application/update?programmeId=${programmeId}`,{
+        userId,
+        passportNo,
+        passportName,
+        gender,
+        country,
+        birth,
+        passType,
+        finNo,
+        passExpire,
+        address,
+        postalCode,
+        qualificationCompleteYear,
+
+        academicInstitutionName,
+        academicQualificationName,
+        companyName,
+        companyIndustry,
+        sponsorType,
+        infoSource,
+    })
+}

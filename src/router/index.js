@@ -93,6 +93,22 @@ const routes = [
             showNavi: true
         }
     },
+    {
+        path: '/confirmApplication',
+        name: 'confirmApplication',
+        component:()=>import('../views/confirmApplication.vue'),
+        meta:{
+            showNavi: true
+        }
+    },
+    {
+        path: '/viewMaterials',
+        name: 'viewMaterials',
+        component:()=>import('../views/viewMaterials.vue'),
+        meta:{
+            showNavi: true
+        }
+    }
 
 ]
 export const router = createRouter({

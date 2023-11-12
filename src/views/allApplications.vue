@@ -3,7 +3,7 @@
   <div style="width: 40%;margin: auto">
     <el-card shadow="never" style="margin-top: 20px;">
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="" style="background-color: white">
-        <el-tab-pane label="under review" name="first">
+        <el-tab-pane label="files not uploaded" name="first">
           <el-card shadow="never"
                    v-for="(item,index) in applicationList0"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
@@ -21,9 +21,27 @@
 
           </el-card>
         </el-tab-pane>
+        <el-tab-pane label="under review" name="second">
+          <el-card shadow="never"
+                   v-for="(item,index) in applicationList1"
+                   style="text-align: left;margin-bottom: 10px;cursor: pointer"
+                   @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
+            <el-row>
+              <el-col :span="2">
+                <el-icon :size="35" color="rgb(232,155,0)"><WarningFilled></WarningFilled></el-icon>
+              </el-col>
+              <el-col :span="20">
+                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+              </el-col>
+            </el-row>
 
-        <el-tab-pane label="pending" name="second">
-          <el-card shadow="never" v-for="(item,index) in applicationList1"
+          </el-card>
+        </el-tab-pane>
+
+        <el-tab-pane label="pending" name="third">
+          <el-card shadow="never" v-for="(item,index) in applicationList2"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
                    @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
             <el-row>
@@ -40,8 +58,8 @@
           </el-card>
         </el-tab-pane>
 
-        <el-tab-pane label="rejected" name="third">
-          <el-card shadow="never" v-for="(item,index) in applicationList1"
+        <el-tab-pane label="rejected" name="forth">
+          <el-card shadow="never" v-for="(item,index) in applicationList3"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
                    @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
             <el-row>
@@ -58,8 +76,8 @@
           </el-card>
         </el-tab-pane>
 
-        <el-tab-pane label="admitted" name="forth">
-          <el-card shadow="never" v-for="(item,index) in applicationList1"
+        <el-tab-pane label="admitted" name="fifth">
+          <el-card shadow="never" v-for="(item,index) in applicationList4"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
                    @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
             <el-row>
@@ -113,7 +131,8 @@ export default {
         programmeInChargeSignature:'',
         status:1,//0 未处理；1 处理中；2 拒绝；3 通过
         applyDate:'2021-01-01'
-      }],applicationList2:[{
+      }],
+      applicationList2:[{
         id:1,
         userId:1,
         userName:'user01',
@@ -125,7 +144,21 @@ export default {
         programmeInChargeSignature:'',
         status:2,//0 未处理；1 处理中；2 拒绝；3 通过
         applyDate:'2021-01-01'
-      }],applicationList3:[{
+      }],
+      applicationList3:[{
+        id:1,
+        userId:1,
+        userName:'user01',
+        userEmail:'111@qq.com',
+        programmeId:2,
+        programmeName:'programme01 dsfgd sfghdfsh ',
+        signature:'',
+        managementSignature:'',
+        programmeInChargeSignature:'',
+        status:3,//0 未处理；1 处理中；2 拒绝；3 通过
+        applyDate:'2021-01-01'
+      }],
+      applicationList4:[{
         id:1,
         userId:1,
         userName:'user01',
@@ -187,6 +220,19 @@ export default {
         this.$data.applicationList3 = res.data.data
         for(i=0;i<this.$data.applicationList3.length;i++){
           this.$data.applicationList3[i].applyDate=this.$data.applicationList3[i].applyDate.slice(0,10)
+        }
+      }
+    })
+    getAllApplication(4,10,1).then(res=>{
+      let i=0
+      if(res.data.code===-1){
+        cleanLocalStorage();
+        this.$router.push('/login')
+      }else {
+
+        this.$data.applicationList4 = res.data.data
+        for(i=0;i<this.$data.applicationList4.length;i++){
+          this.$data.applicationList4[i].applyDate=this.$data.applicationList4[i].applyDate.slice(0,10)
         }
       }
     })

@@ -9,22 +9,22 @@
           <el-row  :gutter="20" >
             <el-col :span="12">
               <div>Passport No.</div>
-              <div><el-input class="form-input" v-model="formData.passportNo" placeholder="please input passport No." disabled></el-input></div>
+              <div><el-input class="form-input" v-model="formData.passportNo" placeholder="please input passport No." ></el-input></div>
             </el-col>
             <el-col :span="12">
               <div>Passport Name</div>
-              <div><el-input class="form-input" v-model="formData.passportName" placeholder="please input passport Name" disabled></el-input></div>
+              <div><el-input class="form-input" v-model="formData.passportName" placeholder="please input passport Name" ></el-input></div>
             </el-col>
           </el-row>
 
           <el-row :gutter="20" style="margin-top: 20px">
             <el-col :span="12">
               <div>Gender</div>
-              <div><el-input class="form-input" v-model="formData.gender" placeholder="please input gender" disabled></el-input></div>
+              <div><el-input class="form-input" v-model="formData.gender" placeholder="please input gender" ></el-input></div>
             </el-col>
             <el-col :span="12">
               <div>Country</div>
-              <div><el-input class="form-input"  v-model="formData.country" placeholder="please input country" disabled></el-input></div>
+              <div><el-input class="form-input"  v-model="formData.country" placeholder="please input country" ></el-input></div>
             </el-col>
           </el-row>
 
@@ -37,19 +37,19 @@
                   placeholder="Pick a day"
                   style="margin-top: 6px;width: 300px"
                   size="large"
-                  disabled
+
               /></div>
             </el-col>
             <el-col :span="12">
               <div>PassType</div>
-              <div><el-input class="form-input"  v-model="formData.passType" placeholder="please input passType" disabled></el-input></div>
+              <div><el-input class="form-input"  v-model="formData.passType" placeholder="please input passType" ></el-input></div>
             </el-col>
           </el-row>
 
           <el-row :gutter="20" style="margin-top: 20px">
             <el-col :span="12">
               <div>FinNo</div>
-              <div><el-input class="form-input"  v-model="formData.finNo" placeholder="please input FinNo" disabled></el-input></div>
+              <div><el-input class="form-input"  v-model="formData.finNo" placeholder="please input FinNo" ></el-input></div>
             </el-col>
             <el-col :span="12">
               <div>PassExpire</div>
@@ -59,7 +59,7 @@
                   placeholder="Pick a day"
                   style="margin-top: 6px;width: 300px"
                   size="large"
-                  disabled
+
               /></div>
             </el-col>
           </el-row>
@@ -76,61 +76,50 @@
         <el-row :gutter="20" style="margin-top: 20px">
           <el-col :span="12">
             <div>Postal Code</div>
-            <div><el-input class="form-input"  v-model="formData.postalCode" placeholder="please input Postal Code" disabled></el-input></div>
+            <div><el-input class="form-input"  v-model="formData.postalCode" placeholder="please input Postal Code" ></el-input></div>
           </el-col>
           <el-col :span="12">
             <div>Qualification Complete Year</div>
-            <div><el-input class="form-input"  v-model="formData.qualificationCompleteYear" placeholder="please input Qualification Complete Year" disabled></el-input></div>
+            <div><el-input class="form-input"  v-model="formData.qualificationCompleteYear" placeholder="please input Qualification Complete Year" ></el-input></div>
           </el-col>
         </el-row>
 
 
         <div style="margin-top:20px">Address</div>
-        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.address" placeholder="please input address" type="textarea" disabled></el-input></div>
+        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.address" placeholder="please input address" type="textarea" ></el-input></div>
 
 
 
         <div style="margin-top:20px">Academic Institution Name</div>
-        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.academicInstitutionName" placeholder="please input Academic Institution Name" type="textarea" disabled></el-input></div>
+        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.academicInstitutionName" placeholder="please input Academic Institution Name" type="textarea" ></el-input></div>
 
 
 
         <div style="margin-top:20px">Academic Qualification Name</div>
-        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.academicQualificationName" placeholder="please input Academic Qualification Name" type="textarea" disabled></el-input></div>
+        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.academicQualificationName" placeholder="please input Academic Qualification Name" type="textarea" ></el-input></div>
 
         <div style="margin-top:20px">Company Name</div>
-        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.companyName" placeholder="please input Company Name" type="textarea" disabled></el-input></div>
+        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.companyName" placeholder="please input Company Name" type="textarea" ></el-input></div>
 
         <div style="margin-top:20px">Company Industry</div>
-        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.companyIndustry" placeholder="please input Company Industry" type="textarea" disabled></el-input></div>
+        <div><el-input style="width: 95%;margin-top: 6px;"  v-model="formData.companyIndustry" placeholder="please input Company Industry" type="textarea" ></el-input></div>
 
         <el-row :gutter="20" style="margin-top: 20px">
           <el-col :span="12">
             <div>Sponsor Type</div>
-            <div><el-input class="form-input"  v-model="formData.sponsorType" placeholder="please input Sponsor Type" disabled ></el-input></div>
+            <div><el-input class="form-input"  v-model="formData.sponsorType" placeholder="please input Sponsor Type"  ></el-input></div>
           </el-col>
           <el-col :span="12">
             <div>Information Source</div>
-            <div><el-input class="form-input"  v-model="formData.infoSource" placeholder="please input Qualification Information Source" disabled ></el-input></div>
+            <div><el-input class="form-input"  v-model="formData.infoSource" placeholder="please input Qualification Information Source"  ></el-input></div>
           </el-col>
         </el-row>
       </div>
     </el-card>
 
-    <el-card shadow="never" style="margin-top: 20px;">
-      <div style="text-align: left;">
-        <span class="title-prefix-_MYP6HvkiQ"></span><span style="font-size: 18px;font-weight: bold">Signature</span>
-        <div class="sig-wrapper">
-          <div style="margin-top: 10px;margin-bottom: 5px">Please sign here</div>
-          <vue-esign style="border: 1px solid #ddd; ;margin: auto" ref="esign" :isClearBgColor=true></vue-esign>
-          <div style="text-align: right;margin-top: 15px" >
-            <el-button @click="handleReset()" type="primary">reset</el-button>
 
-          </div>
-        </div>
-      </div>
-      <el-button size="large" type="primary" style=" font-size: 18px" @click="handleSubmitApplication">submit</el-button>
-    </el-card>
+      <el-button size="large" type="primary" style=" font-size: 18px;margin-bottom: 30px;width: 200px;margin-top: 20px" @click="handleConfirmApplication">submit</el-button>
+
 
   </div>
 </template>
@@ -204,7 +193,7 @@ export default {
       this.resultImg = ''
     },
 
-    handleSubmitApplication(){
+    handleConfirmApplication(){
       /**
       this.$refs.esign.generate().then(res => {  //使用generate将签名导出为图片
         console.log('图片的base64地址', res)
@@ -254,7 +243,7 @@ export default {
         sponsorType:null,
         infoSource:null,
       }
-      submitApplication(applyInfo).then(res=>{
+      /**submitApplication(applyInfo).then(res=>{
         if(res.data.code===0){
           this.$message.success('successfully applied!')
         }else if(res.data.code===-1){
@@ -263,7 +252,9 @@ export default {
         }else {
           this.$message.error("there's something wrong...")
         }
-      })
+      })**/
+      localStorage.setItem('applyFormData',JSON.stringify(applyInfo))
+      this.$router.push({path:'/confirmApplication',query:{hasFormData:true}})
 
     }
 
