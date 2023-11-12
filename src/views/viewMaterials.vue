@@ -13,9 +13,9 @@ export default {
   data(){
     return {
       files: {
-        file0: 'file0.pdf',
-        file1:'file1.pdf',
-        file2:'file2.pdf'
+        file0: 'tang-1-0..pdf',
+        file1:'tang-1-0..pdf',
+        file2:'tang-1-0..pdf'
       }
     }
   },
