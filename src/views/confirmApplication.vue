@@ -184,7 +184,7 @@ export default {
     }
   },
   beforeMount() {
-    //this.$data.formData=JSON.parse(localStorage.getItem('applyFormData'))
+    this.$data.formData=JSON.parse(localStorage.getItem('applyFormData'))
     this.$data.hasFormData=this.$route.query.hasFormData
   },
   methods:{handleReset(){
