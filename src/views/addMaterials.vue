@@ -11,7 +11,7 @@
     <el-upload
         class="upload-demo"
         drag
-        action='http://127.0.0.1/document/upload'
+        action='http://127.0.0.1:8080/document/upload'
         style="width: 80%;margin: auto;height: 180px"
         :limit="1"
         on-success="handleSuccess"
@@ -38,7 +38,7 @@
       <el-upload
           class="upload-demo"
           drag
-          action='http://127.0.0.1/document/upload'
+          action='http://127.0.0.1:8080/document/upload'
           style="width: 80%;margin: auto;height: 180px"
           :limit="1"
           on-success="handleSuccess"
@@ -65,7 +65,7 @@
       <el-upload
           class="upload-demo"
           drag
-          action='http://127.0.0.1/document/upload'
+          action='http://127.0.0.1:8080/document/upload'
           style="width: 80%;margin: auto;height: 180px"
           :limit="1"
           on-success="handleSuccess"
