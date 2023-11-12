@@ -112,9 +112,9 @@ export default {
   },
   created() {
     this.$data.id=this.$route.query.id
-    this.$data.file0.appId=this.query.id
-    this.$data.file1.appId=this.query.id
-    this.$data.file2.appId=this.query.id
+    this.$data.file0.appId=this.$route.query.id
+    this.$data.file1.appId=this.$route.query.id
+    this.$data.file2.appId=this.$route.query.id
 
   },
   methods:{
