@@ -186,6 +186,8 @@ export default {
   beforeMount() {
     this.$data.formData=JSON.parse(localStorage.getItem('applyFormData'))
     this.$data.hasFormData=this.$route.query.hasFormData
+    this.$data.programmeName=this.$route.query.programmeName
+    this.$data.userName=localStorage.getItem('userName')
   },
   methods:{handleReset(){
       this.$refs.esign.reset()//清空画布内容
@@ -207,7 +209,7 @@ export default {
         }
       })**/
       const applyInfo={
-        //todo 没有申请id
+
         programmeId: this.$data.formData.programmeId,
         userId:this.formData.userId,
 

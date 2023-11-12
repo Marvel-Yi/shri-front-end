@@ -210,7 +210,7 @@ export default {
         //has form
         this.$router.push({path:'/applyNew',query:{programmeId:this.$data.courseInfo.id}})
       }else{
-        this.$router.push({path:'/application',query:{programmeId:this.$data.courseInfo.id}})
+        this.$router.push({path:'/application',query:{programmeId:this.$data.courseInfo.id,programmeName:this.$data.courseInfo.name}})
       }
     }
   },

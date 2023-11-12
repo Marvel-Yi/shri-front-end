@@ -116,17 +116,6 @@
     </el-card>
 
     <el-card shadow="never" style="margin-top: 20px;">
-      <div style="text-align: left;">
-      <span class="title-prefix-_MYP6HvkiQ"></span><span style="font-size: 18px;font-weight: bold">Signature</span>
-      <div class="sig-wrapper">
-        <div style="margin-top: 10px;margin-bottom: 5px">Please sign here</div>
-        <vue-esign style="border: 1px solid #ddd; ;margin: auto" ref="esign" :isClearBgColor=true :quality="0.1"></vue-esign>
-        <div style="text-align: right;margin-top: 15px" >
-          <el-button @click="handleReset()" type="primary">reset</el-button>
-
-        </div>
-      </div>
-      </div>
       <el-button size="large" type="primary" style=" font-size: 18px" @click="handleSubmitApplication">submit</el-button>
     </el-card>
 
@@ -173,12 +162,14 @@ export default {
         infoSource:'',
       },
       signImg:'',
-      programmeId: null
+      programmeId: null,
+      programmeName:-1
     }
   },
   mounted() {
     this.$data.formData.userId=localStorage.getItem('userId')
     this.$data.programmeId=this.$route.query.programmeId
+    this.$data.programmeName=this.$route.query.programmeName
   },
   methods:{
     handleReset(){
@@ -253,7 +244,7 @@ export default {
       })**/
 
       localStorage.setItem('applyFormData',JSON.stringify(applyInfo))
-      this.$router.push({path:'/confirmApplication',query:{hasFormData:false}})
+      this.$router.push({path:'/confirmApplication',query:{hasFormData:false,programmeName:this.$data.programmeName}})
 
 
     }
