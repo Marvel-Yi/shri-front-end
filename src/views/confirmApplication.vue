@@ -154,12 +154,15 @@ export default {
   name: "confirmApplication",
   data(){
     return {
+      appId:-1,
       signImg:'',
       hasFormData:false,
       userId:'',
       userName:'',
       programmeName:'',
       formData:{
+        programmeId: -1,
+        userId:-1,
         passportNo:'12432342',
         passportName:'efdsfgsah',
         gender:'male',
@@ -205,7 +208,7 @@ export default {
       })**/
       const applyInfo={
         //todo 没有申请id
-        programmeId: this.$data.programmeId,
+        programmeId: this.$data.formData.programmeId,
         userId:this.formData.userId,
 
         passportNo:this.formData.passportNo,
@@ -231,7 +234,34 @@ export default {
         //use update API
         update(applyInfo).then(res=>{
           if(res.data.code===0){
+            this.$data.appId=res.data.data.app.id
             this.$message.success('successfully applied!')
+
+            //submit signature
+            this.$refs.esign.generate().then(res => {  //使用generate将签名导出为图片
+              console.log('图片的base64地址', res)
+              console.log(this.$refs.esign)
+              this.$data.signImg = res
+
+              const sig={
+                programmeId: this.$data.appId,
+                signature:this.$data.signImg
+              }
+              submitSignature(sig).then(res=>{
+                if(res.data.code===0){
+                  this.$message.success('successfully applied!')
+                }else if(res.data.code===-1){
+                  cleanLocalStorage()
+                  this.$router.push('/login')
+                }else {
+                  this.$message.error("there's something wrong...")
+                }
+              })
+            }).catch(err => {
+              console.log('画布没有签字时', err)
+              alert('请先完成签字！') // 画布没有签字时会执行这里 'Not Signned'
+            })
+
           }else if(res.data.code===-1){
             cleanLocalStorage();
             this.$router.push('/login')
@@ -244,6 +274,31 @@ export default {
         submitApplication(applyInfo).then(res=>{
           if(res.data.code===0){
             this.$message.success('successfully applied!')
+            this.$data.appId=res.data.data.app.id
+            //submit signature
+            this.$refs.esign.generate().then(res => {  //使用generate将签名导出为图片
+              console.log('图片的base64地址', res)
+              console.log(this.$refs.esign)
+              this.$data.signImg = res
+
+              const sig={
+                programmeId: this.$data.appId,
+                signature:this.$data.signImg
+              }
+              submitSignature(sig).then(res=>{
+                if(res.data.code===0){
+                  this.$message.success('successfully applied!')
+                }else if(res.data.code===-1){
+                  cleanLocalStorage()
+                  this.$router.push('/login')
+                }else {
+                  this.$message.error("there's something wrong...")
+                }
+              })
+            }).catch(err => {
+              console.log('画布没有签字时', err)
+              alert('请先完成签字！') // 画布没有签字时会执行这里 'Not Signned'
+            })
           }else if(res.data.code===-1){
             cleanLocalStorage();
             this.$router.push('/login')
@@ -253,31 +308,7 @@ export default {
         })
       }
 
-      //todo submit signature
-      this.$refs.esign.generate().then(res => {  //使用generate将签名导出为图片
-        console.log('图片的base64地址', res)
-        console.log(this.$refs.esign)
-        this.$data.signImg = res
 
-        const sig={
-          programmeId: this.$data.programmeId,
-          signature:this.$data.signImg
-        }
-        submitSignature(sig).then(res=>{
-          if(res.data.code===0){
-            this.$message.success('successfully applied!')
-          }else if(res.data.code===-1){
-            cleanLocalStorage()
-            this.$router.push('/login')
-          }else {
-            this.$message.error("there's something wrong...")
-          }
-        })
-
-      }).catch(err => {
-        console.log('画布没有签字时', err)
-        alert('请先完成签字！') // 画布没有签字时会执行这里 'Not Signned'
-      })
 
     }
   }

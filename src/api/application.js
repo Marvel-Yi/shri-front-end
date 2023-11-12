@@ -92,7 +92,7 @@ export const update=applyInfo=>{
         sponsorType,
         infoSource,
     }=applyInfo;
-    return axios.post(`http://127.0.0.1:8080/programme/application/update?programmeId=${programmeId}`,{
+    return axios.post(`http://127.0.0.1:8080/programme/application/update`,{
         userId,
         passportNo,
         passportName,
