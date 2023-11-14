@@ -7,15 +7,15 @@
           <el-card shadow="never"
                    v-for="(item,index) in applicationList0"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
-                   @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
+                   @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
             <el-row>
               <el-col :span="2">
                 <el-icon :size="35" color="rgb(232,155,0)"><WarningFilled></WarningFilled></el-icon>
               </el-col>
               <el-col :span="22">
-                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
-                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
-                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+                <div><span style="font-weight: bold">user:</span> {{ item.application.userName }}({{item.application.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
             </el-row>
 
@@ -25,15 +25,18 @@
           <el-card shadow="never"
                    v-for="(item,index) in applicationList1"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
-                   @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
+                   @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
             <el-row>
               <el-col :span="2">
                 <el-icon :size="35" color="rgb(232,155,0)"><WarningFilled></WarningFilled></el-icon>
               </el-col>
-              <el-col :span="20">
-                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
-                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
-                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+              <el-col :span="19">
+                <div><span style="font-weight: bold">user:</span> {{ item.application.userName }}({{item.application.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
+              </el-col>
+              <el-col :span="3">
+                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -43,15 +46,18 @@
         <el-tab-pane label="pending" name="third">
           <el-card shadow="never" v-for="(item,index) in applicationList2"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
-                   @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
+                   @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
             <el-row>
               <el-col :span="2">
                 <el-icon :size="35" color="lightblue"><QuestionFilled></QuestionFilled></el-icon>
               </el-col>
-              <el-col :span="22">
-                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
-                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
-                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+              <el-col :span="19">
+                <div><span style="font-weight: bold">user:</span> {{ item.application.userName }}({{item.application.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
+              </el-col>
+              <el-col :span="3">
+                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -61,15 +67,18 @@
         <el-tab-pane label="rejected" name="forth">
           <el-card shadow="never" v-for="(item,index) in applicationList3"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
-                   @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
+                   @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
             <el-row>
               <el-col :span="2">
                 <el-icon :size="35" color="darkred"><CircleCloseFilled></CircleCloseFilled></el-icon>
               </el-col>
-              <el-col :span="22">
-                <div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
-                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
-                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div>
+              <el-col :span="19">
+                <div><span style="font-weight: bold">user:</span> {{ item.application.userName }}({{item.application.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
+              </el-col>
+              <el-col :span="3">
+                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -79,14 +88,17 @@
         <el-tab-pane label="admitted" name="fifth">
           <el-card shadow="never" v-for="(item,index) in applicationList4"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
-                   @click="gotoApplicationPage(item.userId,item.userName,item.programmeName)">
+                   @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
             <el-row>
               <el-col :span="2">
                 <el-icon :size="35" color="green"><SuccessFilled></SuccessFilled></el-icon>
               </el-col>
-              <el-col :span="22"><div><span style="font-weight: bold">user:</span> {{ item.userName }}({{item.userEmail}})</div>
-                <div><span style="font-weight: bold">programme name:</span>  {{ item.programmeName }}</div>
-                <div><span style="font-weight: bold">apply date:</span> {{item.applyDate}}</div></el-col>
+              <el-col :span="19"><div><span style="font-weight: bold">user:</span> {{ item.application.userName }}({{item.application.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div></el-col>
+              <el-col :span="3">
+                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
+              </el-col>
             </el-row>
 
           </el-card>
@@ -106,7 +118,7 @@ export default {
   data(){
     return {
       activeName:'first',
-      applicationList0:[{
+      applicationList0:[{application:{
         id:1,
         userId:1,
         userName:'user01',
@@ -118,59 +130,74 @@ export default {
         programmeInChargeSignature:'',
         status:0,//0 未处理；1 处理中；2 拒绝；3 通过
         applyDate:'2021-01-01'
+      },
+        fileList:['a.pdf','b.pdf','c.pdf']
       }],
       applicationList1:[{
-        id:1,
-        userId:1,
-        userName:'user01',
-        userEmail:'111@qq.com',
-        programmeId:2,
-        programmeName:'programme01sf  edfsdg sdgsd',
-        signature:'',
-        managementSignature:'',
-        programmeInChargeSignature:'',
-        status:1,//0 未处理；1 处理中；2 拒绝；3 通过
-        applyDate:'2021-01-01'
+        application: {
+          id: 1,
+          userId: 1,
+          userName: 'user01',
+          userEmail: '111@qq.com',
+          programmeId: 2,
+          programmeName: 'programme01sf  edfsdg sdgsd',
+          signature: '',
+          managementSignature: '',
+          programmeInChargeSignature: '',
+          status: 1,//0 未处理；1 处理中；2 拒绝；3 通过
+          applyDate: '2021-01-01'
+        },
+        fileList:['a.pdf','b.pdf','c.pdf']
       }],
       applicationList2:[{
-        id:1,
-        userId:1,
-        userName:'user01',
-        userEmail:'111@qq.com',
-        programmeId:2,
-        programmeName:'programme01 dhdgfh df hs',
-        signature:'',
-        managementSignature:'',
-        programmeInChargeSignature:'',
-        status:2,//0 未处理；1 处理中；2 拒绝；3 通过
-        applyDate:'2021-01-01'
-      }],
+        application: {
+          id: 1,
+          userId: 1,
+          userName: 'user01',
+          userEmail: '111@qq.com',
+          programmeId: 2,
+          programmeName: 'programme01 dhdgfh df hs',
+          signature: '',
+          managementSignature: '',
+          programmeInChargeSignature: '',
+          status: 2,//0 未处理；1 处理中；2 拒绝；3 通过
+          applyDate: '2021-01-01'
+        },
+        fileList:['a.pdf','b.pdf','c.pdf']
+      }
+      ],
       applicationList3:[{
-        id:1,
-        userId:1,
-        userName:'user01',
-        userEmail:'111@qq.com',
-        programmeId:2,
-        programmeName:'programme01 dsfgd sfghdfsh ',
-        signature:'',
-        managementSignature:'',
-        programmeInChargeSignature:'',
-        status:3,//0 未处理；1 处理中；2 拒绝；3 通过
-        applyDate:'2021-01-01'
+        application: {
+          id: 1,
+          userId: 1,
+          userName: 'user01',
+          userEmail: '111@qq.com',
+          programmeId: 2,
+          programmeName: 'programme01 dsfgd sfghdfsh ',
+          signature: '',
+          managementSignature: '',
+          programmeInChargeSignature: '',
+          status: 3,//0 未处理；1 处理中；2 拒绝；3 通过
+          applyDate: '2021-01-01'
+        },
+        fileList:['a.pdf','b.pdf','c.pdf']
       }],
       applicationList4:[{
-        id:1,
-        userId:1,
-        userName:'user01',
-        userEmail:'111@qq.com',
-        programmeId:2,
-        programmeName:'programme01 dsfgd sfghdfsh ',
-        signature:'',
-        managementSignature:'',
-        programmeInChargeSignature:'',
-        status:3,//0 未处理；1 处理中；2 拒绝；3 通过
-        applyDate:'2021-01-01'
-      },]
+        application: {
+          id: 1,
+          userId: 1,
+          userName: 'user01',
+          userEmail: '111@qq.com',
+          programmeId: 2,
+          programmeName: 'programme01 dsfgd sfghdfsh ',
+          signature: '',
+          managementSignature: '',
+          programmeInChargeSignature: '',
+          status: 3,//0 未处理；1 处理中；2 拒绝；3 通过
+          applyDate: '2021-01-01'
+        },
+        fileList:['a.pdf','b.pdf','c.pdf']
+      }]
     }
   },
   mounted() {
@@ -240,6 +267,10 @@ export default {
   methods:{
     gotoApplicationPage(userId,userName,programmeName){
       this.$router.push({path:'/showApplication',query:{userId:userId,userName:userName,programmeName:programmeName}})
+    },
+    viewFiles(fileList){
+      console.log(fileList)
+      this.$router.push({path:'/viewMaterials',query:{file0:fileList[0],file1:fileList[1],file2:fileList[2]}})
     }
 
   }

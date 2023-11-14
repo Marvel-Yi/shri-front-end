@@ -48,6 +48,11 @@ export default {
       }
     }
   },
+  mounted() {
+    this.$data.files.file0=this.$route.query.file0
+    this.$data.files.file1=this.$route.query.file1
+    this.$data.files.file2=this.$route.query.file2
+  },
   methods:{
     viewFile0(){
       getFile(this.$data.files.file0).then(res=>{
