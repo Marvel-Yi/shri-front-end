@@ -108,6 +108,14 @@ const routes = [
         meta:{
             showNavi: true
         }
+    },
+    {
+        path: '/update',
+        name: 'update',
+        component:()=>import('../views/update.vue'),
+        meta:{
+            showNavi: true
+        }
     }
 
 ]
