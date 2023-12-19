@@ -36,7 +36,7 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.fileList,1,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -57,7 +57,7 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.fileList,2,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -78,7 +78,7 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.fileList,3,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -97,7 +97,7 @@
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div></el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.fileList,4,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -268,9 +268,9 @@ export default {
     gotoApplicationPage(userId,userName,programmeName){
       this.$router.push({path:'/showApplication',query:{userId:userId,userName:userName,programmeName:programmeName}})
     },
-    viewFiles(fileList){
+    viewFiles(fileList,status,appId){
       console.log(fileList)
-      this.$router.push({path:'/viewMaterials',query:{file0:fileList[0],file1:fileList[1],file2:fileList[2]}})
+      this.$router.push({path:'/viewMaterials',query:{file0:fileList[0],file1:fileList[1],file2:fileList[2],status:status}})
     }
 
   }
