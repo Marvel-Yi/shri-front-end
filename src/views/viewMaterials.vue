@@ -37,7 +37,7 @@
         <div style="height: 20px"></div>
         <el-radio-group v-model="chooseStatus" size="large">
           <el-radio-button label="2"> pending</el-radio-button>
-          <el-radio-button label="3"> rejected</el-radio-button>
+          <el-radio-button label="3" @click="declineShow=true"> rejected</el-radio-button>
           <el-radio-button label="4"> admitted</el-radio-button>
         </el-radio-group>
         <div style="height: 30px"></div>
@@ -48,20 +48,24 @@
         <span class="title-prefix-_MYP6HvkiQ" ></span><span style="font-weight: bold">CHANGE STATUS</span>
         <div style="height: 20px"></div>
         <el-radio-group v-model="chooseStatus" size="large">
-          <el-radio-button label="3"> rejected</el-radio-button>
+          <el-radio-button label="3" @click="declineShow=true"> rejected</el-radio-button>
           <el-radio-button label="4"> admitted</el-radio-button>
         </el-radio-group>
         <div style="height: 30px"></div>
         <el-button type="primary" size="large" style="float: right;margin-right: 50px;" @click="changeStatus()">CHANGE</el-button>
         <div style="height: 30px"></div>
       </div>
-      <div v-if="status==3||status==4"  style="margin-left: 20px;margin-top: 40px;padding-bottom: 20px">
+      <div v-if="status==3||status==4||status==5"  style="margin-left: 20px;margin-top: 30px;padding-bottom: 20px">
         <span class="title-prefix-_MYP6HvkiQ" ></span><span style="font-weight: bold">STATUS</span>
         <el-result
             icon="success"
             title="Admitted!"
             v-if="status==4"
         >
+          <template #extra>
+            <span v-if="decisionSent==0" style="color: gray">decision hasn't been sent yet</span>
+            <span v-if="decisionSent==1" style="color: gray">decision sent</span>
+          </template>
         </el-result>
 
         <el-result
@@ -69,11 +73,44 @@
             title="Rejected!"
             v-if="status==3"
         >
+          <template #extra>
+            <span v-if="decisionSent==0" style="color: gray">decision hasn't been sent yet</span>
+            <span v-if="decisionSent==1" style="color: gray">decision sent</span>
+          </template>
+        </el-result>
+
+        <el-result
+            title="Confirmed!"
+            v-if="status==5"
+        >
+          <template #icon>
+            <el-icon size="100" color="green" ><Checked /></el-icon>
+          </template>
         </el-result>
       </div>
     </el-card>
 
+    <el-dialog
+        v-model="declineShow"
+        title="Reject Reason"
+        width="30%"
+    >
 
+      <el-input
+          placeholder="please input reject reason"
+          v-model="declineReason"
+          type="textarea"
+          :autosize="{ minRows: 2, maxRows: 4 }"
+      ></el-input>
+      <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="declineShow = false">Cancel</el-button>
+        <el-button type="primary" @click="confirmDecline">
+          Confirm
+        </el-button>
+      </span>
+      </template>
+    </el-dialog>
   </div>
 
 </template>
@@ -93,7 +130,10 @@ export default {
         file2:'tang-1-0..pdf'
       },
       chooseStatus:-1,
-      appId:-1
+      appId:-1,
+      declineReason:'',
+      declineShow:false,
+      decisionSent:-1
     }
   },
   mounted() {
@@ -102,6 +142,7 @@ export default {
     this.$data.files.file2=this.$route.query.file2
     this.$data.status=this.$route.query.status
     this.$data.appId=this.$route.query.appId
+    this.$data.decisionSent=this.$route.query.decisionSent
   },
   methods:{
     changeStatus(){
@@ -109,7 +150,13 @@ export default {
       if(this.$data.chooseStatus===-1){
         this.$message.error("please choose the status!")
       }else{
-        changeApplicationStatus(this.$data.appId,this.$data.chooseStatus)
+        if(this.$data.chooseStatus===3&&this.$data.declineReason===''){
+          alert('please input reject reason')
+
+        }else {
+          changeApplicationStatus(this.$data.appId, this.$data.chooseStatus,this.$data.declineReason)
+          //todo 这边可能要刷新一下？不然显示不出状态变化
+        }
       }
 
 
@@ -134,6 +181,13 @@ export default {
         let url=window.URL.createObjectURL(blob)
         window.open(url,"_blank")
       })
+    },
+    confirmDecline(){
+      if(this.$data.declineReason===''){
+        alert('please input reject reason')
+      }else{
+        this.$data.declineShow=false
+      }
     },
     downloadFile(type){
       let fileName=''

@@ -103,6 +103,25 @@
 
           </el-card>
         </el-tab-pane>
+
+        <el-tab-pane label="confirmed" name="sixth">
+          <el-card shadow="never" v-for="(item,index) in applicationList5"
+                   style="text-align: left;margin-bottom: 10px;cursor: pointer"
+                   @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
+            <el-row>
+              <el-col :span="2">
+                <el-icon :size="35" color="green"><SuccessFilled></SuccessFilled></el-icon>
+              </el-col>
+              <el-col :span="19"><div><span style="font-weight: bold">user:</span> {{ item.application.userName }}({{item.application.userEmail}})</div>
+                <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
+                <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div></el-col>
+              <el-col :span="3">
+                <el-button v-on:click.stop="viewFiles(item.fileList,5,item.application.id)">view files</el-button>
+              </el-col>
+            </el-row>
+
+          </el-card>
+        </el-tab-pane>
       </el-tabs>
     </el-card>
   </div>
@@ -128,8 +147,9 @@ export default {
         signature:'',
         managementSignature:'',
         programmeInChargeSignature:'',
-        status:0,//0 未处理；1 处理中；2 拒绝；3 通过
-        applyDate:'2021-01-01'
+        status:0,//0 缺文件；1 待处理；2 处理中；3 拒绝；4 通过；5 确认
+        applyDate:'2021-01-01',
+          hasDecisionSent:0
       },
         fileList:['a.pdf','b.pdf','c.pdf']
       }],
@@ -144,8 +164,9 @@ export default {
           signature: '',
           managementSignature: '',
           programmeInChargeSignature: '',
-          status: 1,//0 未处理；1 处理中；2 拒绝；3 通过
-          applyDate: '2021-01-01'
+          status: 1,//0 缺文件；1 待处理；2 处理中；3 拒绝；4 通过；5 确认
+          applyDate: '2021-01-01',
+          hasDecisionSent:0
         },
         fileList:['a.pdf','b.pdf','c.pdf']
       }],
@@ -160,8 +181,9 @@ export default {
           signature: '',
           managementSignature: '',
           programmeInChargeSignature: '',
-          status: 2,//0 未处理；1 处理中；2 拒绝；3 通过
-          applyDate: '2021-01-01'
+          status: 2,//0 缺文件；1 待处理；2 处理中；3 拒绝；4 通过；5 确认
+          applyDate: '2021-01-01',
+          hasDecisionSent:0
         },
         fileList:['a.pdf','b.pdf','c.pdf']
       }
@@ -177,8 +199,9 @@ export default {
           signature: '',
           managementSignature: '',
           programmeInChargeSignature: '',
-          status: 3,//0 未处理；1 处理中；2 拒绝；3 通过
-          applyDate: '2021-01-01'
+          status: 3,//0 缺文件；1 待处理；2 处理中；3 拒绝；4 通过；5 确认
+          applyDate: '2021-01-01',
+          hasDecisionSent:0
         },
         fileList:['a.pdf','b.pdf','c.pdf']
       }],
@@ -193,8 +216,26 @@ export default {
           signature: '',
           managementSignature: '',
           programmeInChargeSignature: '',
-          status: 3,//0 未处理；1 处理中；2 拒绝；3 通过
-          applyDate: '2021-01-01'
+          status: 4,//0 缺文件；1 待处理；2 处理中；3 拒绝；4 通过；5 确认//0 未处理；1 处理中；2 拒绝；3 通过
+          applyDate: '2021-01-01',
+          hasDecisionSent:1
+        },
+        fileList:['a.pdf','b.pdf','c.pdf']
+      }],
+      applicationList5:[{
+        application: {
+          id: 1,
+          userId: 1,
+          userName: 'user05',
+          userEmail: '555@qq.com',
+          programmeId: 2,
+          programmeName: 'programme01 dsfgd sfghdfsh ',
+          signature: '',
+          managementSignature: '',
+          programmeInChargeSignature: '',
+          status: 5,//0 缺文件；1 待处理；2 处理中；3 拒绝；4 通过；5 确认
+          applyDate: '2021-01-01',
+          hasDecisionSent:1
         },
         fileList:['a.pdf','b.pdf','c.pdf']
       }]
@@ -268,9 +309,9 @@ export default {
     gotoApplicationPage(userId,userName,programmeName){
       this.$router.push({path:'/showApplication',query:{userId:userId,userName:userName,programmeName:programmeName}})
     },
-    viewFiles(fileList,status,appId){
+    viewFiles(fileList,status,decisionSent){
       console.log(fileList)
-      this.$router.push({path:'/viewMaterials',query:{file0:fileList[0],file1:fileList[1],file2:fileList[2],status:status}})
+      this.$router.push({path:'/viewMaterials',query:{file0:fileList[0],file1:fileList[1],file2:fileList[2],status:status,decisionSent:decisionSent}})
     }
 
   }
