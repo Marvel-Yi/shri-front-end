@@ -36,7 +36,7 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.docNames,1,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,1,item.application.hasDecisionSent,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -57,7 +57,7 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.docNames,2,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,2,item.application.hasDecisionSent,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -78,7 +78,7 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.docNames,3,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,3,item.application.hasDecisionSent,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -97,7 +97,7 @@
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div></el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.docNames,4,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,4,item.application.hasDecisionSent,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
