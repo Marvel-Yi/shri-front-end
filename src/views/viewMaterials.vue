@@ -5,11 +5,12 @@
       <div style="margin-left: 20px;margin-top: 20px;padding-bottom: 20px">
         <span class="title-prefix-_MYP6HvkiQ" ></span><span style="font-weight: bold">EDUCATION CERTIFICATE</span>
         <div style="margin-top: 20px;margin-left: 30px">
-          <div style="margin-bottom: 10px">{{files.file0}}</div>
+
           <div v-if="files.file0==='null'">
             You haven't uploaded this file
           </div>
           <div v-else>
+            <div style="margin-bottom: 10px">{{files.file0}}</div>
             <el-button @click="viewFile0">click to view</el-button>
             <el-button>click to download</el-button>
           </div>
@@ -20,11 +21,12 @@
       <div style="margin-left: 20px;margin-top: 40px;padding-bottom: 20px">
         <span class="title-prefix-_MYP6HvkiQ" ></span><span style="font-weight: bold">LANGUAGE CERTIFICATE</span>
         <div style="margin-top: 20px;margin-left: 30px">
-          <div style="margin-bottom: 10px">{{files.file1}}</div>
+
           <div v-if="files.file1==='null'">
             You haven't uploaded this file
           </div>
           <div v-else>
+            <div style="margin-bottom: 10px">{{files.file1}}</div>
             <el-button @click="viewFile1">click to view</el-button>
             <el-button>click to download</el-button>
           </div>
@@ -36,11 +38,12 @@
       <div style="margin-left: 20px;margin-top: 40px;padding-bottom: 20px">
         <span class="title-prefix-_MYP6HvkiQ" ></span><span style="font-weight: bold">EMPLOYMENT CERTIFICATE</span>
         <div style="margin-top: 20px;margin-left: 30px">
-          <div style="margin-bottom: 10px">{{files.file2}}</div>
+
           <div v-if="files.file2==='null'">
             You haven't uploaded this file
           </div>
           <div v-else>
+            <div style="margin-bottom: 10px">{{files.file2}}</div>
             <el-button @click="viewFile2">click to view</el-button>
             <el-button>click to download</el-button>
           </div>
