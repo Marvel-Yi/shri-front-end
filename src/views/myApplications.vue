@@ -6,6 +6,7 @@
           <el-card shadow="never"
                    v-for="(item,index) in applicationList"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
+                   @click="openMaterialsPage(item)"
                   >
             <el-row>
               <el-col :span="2">
@@ -99,6 +100,12 @@ export default {
     },
     addMaterials(programmeId){
       this.$router.push({path:'/materials',query:{id:programmeId}})
+    },
+    openMaterialsPage(item){
+      //if(item.application.status===0||item.application.status===1||item.application.status===2){
+        //打开
+        this.$router.push({path:'/viewMyMaterials',query:{file0:item.docNames[0],file1:item.docNames[1],file2:item.docNames[2],status:item.application.status}})
+      //}
     }
   }
 }

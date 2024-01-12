@@ -116,6 +116,14 @@ const routes = [
         meta:{
             showNavi: true
         }
+    },
+    {
+        path: '/viewMyMaterials',
+        name: 'viewMyMaterials',
+        component:()=>import('../views/viewMyMaterials.vue'),
+        meta:{
+            showNavi: true
+        }
     }
 
 ]

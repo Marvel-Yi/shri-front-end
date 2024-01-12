@@ -1,9 +1,9 @@
 <template>
   <div style="height:59px"></div>
-  <div style="width: 40%;margin: auto">
+  <div style="width: 50%;margin: auto">
     <el-card shadow="never" style="margin-top: 20px;">
-      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="" style="background-color: white">
-        <el-tab-pane label="files not uploaded" name="first">
+      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="" style="background-color: white" tab-position="left">
+        <el-tab-pane label="FILES NOT UPLOADED" name="first">
           <el-card shadow="never"
                    v-for="(item,index) in applicationList0"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
@@ -21,7 +21,7 @@
 
           </el-card>
         </el-tab-pane>
-        <el-tab-pane label="under review" name="second">
+        <el-tab-pane label="UNDER REVIEW" name="second" >
           <el-card shadow="never"
                    v-for="(item,index) in applicationList1"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
@@ -36,14 +36,14 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList,1,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,1,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
           </el-card>
         </el-tab-pane>
 
-        <el-tab-pane label="pending" name="third">
+        <el-tab-pane label="PENDING" name="third" style="text-align: center;">
           <el-card shadow="never" v-for="(item,index) in applicationList2"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
                    @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
@@ -57,14 +57,14 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList,2,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,2,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
           </el-card>
         </el-tab-pane>
 
-        <el-tab-pane label="rejected" name="forth">
+        <el-tab-pane label="REJECTED" name="forth">
           <el-card shadow="never" v-for="(item,index) in applicationList3"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
                    @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
@@ -78,14 +78,14 @@
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div>
               </el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList,3,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,3,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
           </el-card>
         </el-tab-pane>
 
-        <el-tab-pane label="admitted" name="fifth">
+        <el-tab-pane label="ADMITTED" name="fifth">
           <el-card shadow="never" v-for="(item,index) in applicationList4"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
                    @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
@@ -97,14 +97,14 @@
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div></el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList,4,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,4,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
           </el-card>
         </el-tab-pane>
 
-        <el-tab-pane label="confirmed" name="sixth">
+        <el-tab-pane label="CONFIRMED" name="sixth">
           <el-card shadow="never" v-for="(item,index) in applicationList5"
                    style="text-align: left;margin-bottom: 10px;cursor: pointer"
                    @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)">
@@ -116,7 +116,7 @@
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div></el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.fileList,5,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,5,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -151,7 +151,7 @@ export default {
         applyDate:'2021-01-01',
           hasDecisionSent:0
       },
-        fileList:['a.pdf','b.pdf','c.pdf']
+        docNames:['a.pdf','b.pdf','c.pdf']
       }],
       applicationList1:[{
         application: {
@@ -168,7 +168,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:0
         },
-        fileList:['a.pdf','b.pdf','c.pdf']
+        docNames:['a.pdf','b.pdf','c.pdf']
       }],
       applicationList2:[{
         application: {
@@ -185,7 +185,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:0
         },
-        fileList:['a.pdf','b.pdf','c.pdf']
+        docNames:['a.pdf','b.pdf','c.pdf']
       }
       ],
       applicationList3:[{
@@ -203,7 +203,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:0
         },
-        fileList:['a.pdf','b.pdf','c.pdf']
+        docNames:['a.pdf','b.pdf','c.pdf']
       }],
       applicationList4:[{
         application: {
@@ -220,7 +220,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:1
         },
-        fileList:['a.pdf','b.pdf','c.pdf']
+        docNames:['a.pdf','b.pdf','c.pdf']
       }],
       applicationList5:[{
         application: {
@@ -237,7 +237,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:1
         },
-        fileList:['a.pdf','b.pdf','c.pdf']
+        docNames:['a.pdf','b.pdf','c.pdf']
       }]
     }
   },
@@ -309,9 +309,9 @@ export default {
     gotoApplicationPage(userId,userName,programmeName){
       this.$router.push({path:'/showApplication',query:{userId:userId,userName:userName,programmeName:programmeName}})
     },
-    viewFiles(fileList,status,decisionSent){
-      console.log(fileList)
-      this.$router.push({path:'/viewMaterials',query:{file0:fileList[0],file1:fileList[1],file2:fileList[2],status:status,decisionSent:decisionSent}})
+    viewFiles(docNames,status,decisionSent){
+      console.log(docNames)
+      this.$router.push({path:'/viewMaterials',query:{file0:docNames[0],file1:docNames[1],file2:docNames[2],status:status,decisionSent:decisionSent}})
     }
 
   }
@@ -319,5 +319,8 @@ export default {
 </script>
 
 <style scoped>
+::v-deep .el-tabs--left .el-tabs__item.is-left, .el-tabs--right .el-tabs__item.is-left {
+  justify-content: left;
+}
 
 </style>
