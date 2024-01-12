@@ -28,5 +28,5 @@ export const getAllApplication=(status,limit,current)=>{
 }
 
 export const changeApplicationStatus=(appId,status,reason)=>{
-    return axios.post(`http://127.0.0.1:8080/programme/application/decide?appId=${appId}&status=${status}&reason=${reason}`)
+    return axios.post(`http://127.0.0.1:8080/programme/application/decide?appId=${appId}&status=${status}&advice=${reason}`)
 }
