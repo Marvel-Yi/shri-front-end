@@ -27,7 +27,7 @@
                   <span v-if="item.application.status===4">admitted</span>
                 </div>
               </el-col>
-              <el-col :span="3">
+              <el-col :span="3" @click.stop="">
                 <el-button type="primary" v-if="item.application.status===0||item.application.status===1||item.application.status===2" @click="addMaterials(item.application.programmeId)"> add</el-button>
                 <el-button type="primary" v-else  @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)"> check</el-button>
               </el-col>
