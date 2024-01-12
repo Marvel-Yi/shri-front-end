@@ -28,7 +28,7 @@
                 </div>
               </el-col>
               <el-col :span="3" @click.stop="">
-                <el-button type="primary" v-if="item.application.status===0||item.application.status===1||item.application.status===2" @click="addMaterials(item.application.programmeId)"> add</el-button>
+                <el-button type="primary" v-if="item.application.status===0||item.application.status===1||item.application.status===2" @click="addMaterials(item.application.id)"> add</el-button>
                 <el-button type="primary" v-else  @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)"> check</el-button>
               </el-col>
             </el-row>
@@ -98,8 +98,8 @@ export default {
     gotoApplicationPage(userId,userName,programmeName){
       this.$router.push({path:'/showApplication',query:{userId:userId,userName:userName,programmeName:programmeName}})
     },
-    addMaterials(programmeId){
-      this.$router.push({path:'/materials',query:{id:programmeId}})
+    addMaterials(id){
+      this.$router.push({path:'/materials',query:{id:id}})
     },
     openMaterialsPage(item){
       //if(item.application.status===0||item.application.status===1||item.application.status===2){
