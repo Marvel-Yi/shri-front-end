@@ -52,6 +52,21 @@
       </div>
 
       <el-divider></el-divider>
+      <div style="margin-left: 20px;margin-top: 20px;padding-bottom: 20px" v-if="status==4||status==5">
+        <span class="title-prefix-_MYP6HvkiQ" ></span><span style="font-weight: bold">ACCEPTANCE FORM</span>
+        <div style="margin-top: 20px;margin-left: 30px">
+          <div v-if="files.file0==='null'">
+            You haven't uploaded this file
+          </div>
+          <div v-else>
+            <div style="margin-bottom: 10px">3-tang-18.pdf</div>
+            <el-button @click="viewFile0">click to view</el-button>
+            <el-button>click to download</el-button>
+          </div>
+        </div>
+      </div>
+      <el-divider></el-divider>
+
       <div v-if="status==1" style="margin-left: 20px;margin-top: 40px;padding-bottom: 20px">
         <span class="title-prefix-_MYP6HvkiQ" ></span><span style="font-weight: bold">CHANGE STATUS</span>
         <div style="height: 20px"></div>

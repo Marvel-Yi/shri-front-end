@@ -25,11 +25,16 @@
                   <span v-if="item.application.status===2">pending</span>
                   <span v-if="item.application.status===3">rejected</span>
                   <span v-if="item.application.status===4">admitted</span>
+                  <span v-if="item.application.status===5">confirmed</span>
                 </div>
               </el-col>
-              <el-col :span="3" @click.stop="">
+
+              <el-col :span="3" @click.stop="" style="">
+
                 <el-button type="primary" v-if="item.application.status===0||item.application.status===1||item.application.status===2" @click="addMaterials(item.application.id)"> add</el-button>
                 <el-button type="primary" v-else  @click="gotoApplicationPage(item.application.userId,item.application.userName,item.application.programmeName)"> check</el-button>
+                <el-button type="primary" v-if="item.application.status===4" @click="uploadAcceptanceVisible=true" style="margin-top: 10px">accept</el-button>
+
               </el-col>
             </el-row>
           </el-card>
@@ -37,6 +42,29 @@
 
 
     </el-card>
+    <el-dialog
+        v-model="uploadAcceptanceVisible"
+        title="Upload Acceptance Form"
+    >
+      <el-upload
+          class="upload-demo"
+          drag
+          action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+          multiple
+      >
+        <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+        <div class="el-upload__text">
+          Drop file here or <em>click to upload</em>
+        </div>
+        <template #tip>
+          <div class="el-upload__tip">
+            please upload your acceptance form
+          </div>
+        </template>
+      </el-upload>
+    </el-dialog>
+
+
   </div>
 </template>
 
@@ -52,37 +80,22 @@ export default {
       applicationList:[
         {
           application: {
-            id: 1,
-            userId: 1,
-            userName: 'user01',
-            userEmail: '111@qq.com',
-            programmeId: 2,
-            programmeName: 'programme01 jkhsdfj sjdf lkj s',
-            signature: '',
-            managementSignature: '',
-            programmeInChargeSignature: '',
-            status: 3,//0 未上传材料；1 未处理；2 处理中；3 拒绝；4 通过
-            applyDate: '2021-01-01'
-          },
-          docNames:['a.pdf','b.pdf']
-        },
-        {
-          application: {
             id: 2,
             userId: 1,
             userName: 'user02',
             userEmail: '121@qq.com',
             programmeId: 3,
-            programmeName: 'programme02 jkhsdfj sjdf lkj s',
+            programmeName: 'CERTIFICATE IN PAYROLL ADMINISTRATION',
             signature: '',
             managementSignature: '',
             programmeInChargeSignature: '',
-            status: 0,//0 未上传材料；1 未处理；2 处理中；3 拒绝；4 通过
-            applyDate: '2021-01-01'
+            status: 4,//0 未上传材料；1 未处理；2 处理中；3 拒绝；4 通过
+            applyDate: '2023-10-03'
           },
           docNames: ['aa.pdf','bb.pdf']
         }
-      ]
+      ],
+      uploadAcceptanceVisible:false
     }
   },
   mounted() {
@@ -112,5 +125,7 @@ export default {
 </script>
 
 <style scoped>
-
+::v-deep.el-button+.el-button {
+  margin-left: 0px;
+}
 </style>

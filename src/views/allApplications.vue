@@ -151,7 +151,7 @@ export default {
         applyDate:'2021-01-01',
           hasDecisionSent:0
       },
-        docNames:['a.pdf','b.pdf','c.pdf']
+        docNames:['0-tang-18.pdf','1-tang-18.pdf','2-tang-18.pdf']
       }],
       applicationList1:[{
         application: {
@@ -168,7 +168,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:0
         },
-        docNames:['a.pdf','b.pdf','c.pdf']
+        docNames:['0-tang-18.pdf','1-tang-18.pdf','2-tang-18.pdf']
       }],
       applicationList2:[{
         application: {
@@ -185,7 +185,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:0
         },
-        docNames:['a.pdf','b.pdf','c.pdf']
+        docNames:['0-tang-18.pdf','1-tang-18.pdf','2-tang-18.pdf']
       }
       ],
       applicationList3:[{
@@ -203,7 +203,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:0
         },
-        docNames:['a.pdf','b.pdf','c.pdf']
+        docNames:['0-tang-18.pdf','1-tang-18.pdf','2-tang-18.pdf']
       }],
       applicationList4:[{
         application: {
@@ -220,7 +220,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:1
         },
-        docNames:['a.pdf','b.pdf','c.pdf']
+        docNames:['0-tang-18.pdf','1-tang-18.pdf','2-tang-18.pdf']
       }],
       applicationList5:[{
         application: {
@@ -237,7 +237,7 @@ export default {
           applyDate: '2021-01-01',
           hasDecisionSent:1
         },
-        docNames:['a.pdf','b.pdf','c.pdf']
+        docNames:['0-tang-18.pdf','1-tang-18.pdf','2-tang-18.pdf']
       }]
     }
   },
