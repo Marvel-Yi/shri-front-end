@@ -116,7 +116,7 @@
                 <div><span style="font-weight: bold">programme name:</span>  {{ item.application.programmeName }}</div>
                 <div><span style="font-weight: bold">apply date:</span> {{item.application.applyDate}}</div></el-col>
               <el-col :span="3">
-                <el-button v-on:click.stop="viewFiles(item.docNames,5,item.application.id)">view files</el-button>
+                <el-button v-on:click.stop="viewFiles(item.docNames,5,item.application.hasDecisionSent,item.application.id)">view files</el-button>
               </el-col>
             </el-row>
 
@@ -309,9 +309,9 @@ export default {
     gotoApplicationPage(userId,userName,programmeName){
       this.$router.push({path:'/showApplication',query:{userId:userId,userName:userName,programmeName:programmeName}})
     },
-    viewFiles(docNames,status,decisionSent){
+    viewFiles(docNames,status,decisionSent,appId){
       console.log(docNames)
-      this.$router.push({path:'/viewMaterials',query:{file0:docNames[0],file1:docNames[1],file2:docNames[2],status:status,decisionSent:decisionSent}})
+      this.$router.push({path:'/viewMaterials',query:{file0:docNames[0],file1:docNames[1],file2:docNames[2],status:status,decisionSent:decisionSent,appId:appId}})
     }
 
   }
